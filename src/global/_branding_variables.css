@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
 :root {
   --brand-pink: #46daff;
@@ -6,13 +6,28 @@
   --brand-violet: #b900ff;
   --brand-cyan: #00ffff;
 
+  --brand-blue-light: #316aea;
+  --brand-blue-dark: #00205c;
+  --brand-blue-darker: #040050;
+  --brand-green-light: #87c300;
+  --brand-green: #00b96e;
+  --brand-green-dark: #108a43;
+  --brand-white: #ffffff;
+  --brand-grey-white: #f9f9f9;
+  --brand-greyish: #d8d8d8;
+
   --brand-black: #000046;
 
-  --color-primary: #000094;
+  --color-primary: var(--brand-blue-dark);
 
-  --color-menu-active: #465aff;
-  --border-color-menu: var(--color-primary);
-  --border-radius-menu: 2px;
+  --color-menu-active: var(--brand-blue-light);
+  --font-color-menu: var(--brand-blue-dark);
+  --border-color-menu: var(--brand-blue-dark);
+  --border-radius-menu: 5px;
+  --border-size-menu-button: 2px;
+  --border-size-menu-icon: 0px;
+  --icon-fill: var(--brand-blue-dark);
+  --icon-fill-inverted: var(--brand-white);
 
   --brand-gradient: linear-gradient(
     to right bottom,
@@ -43,10 +58,11 @@
   --brand-grey-lighter: #d4d4e2;
   --brand-grey-dimmed: #f1f3f8;
 
-  --font-family-base: 'Titillium Web', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Helvetica, Arial, sans-serif;
-  --font-family-heading: 'Titillium Web', -apple-system, BlinkMacSystemFont,
+  --font-family-base: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
+  --font-family-heading: 'Poppins', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Helvetica, Arial, sans-serif;
 
   --font-weight-base: 400;
+  --font-weight-bold: 500;
 }

@@ -1,61 +1,27 @@
 {
   "site": {
-    "siteTitle": "Minimal Viable Gaia-X Demonstrator",
-    "siteTagline": "A platform to find, publish and consume Service Offerings in the Gaia-X Test Network.",
-    "siteUrl": "https://portal.minimal-gaia-x.eu",
+    "siteTitle": "Future Mobility Data Marketplace",
+    "siteTagline": "Solving mobility challenges.",
+    "siteUrl": "https://rws.portal.minimal-gaia-x.eu",
     "siteIcon": "./src/images/siteIcon.png",
     "siteImage": "../src/images/share.png",
     "copyright": "All Rights Reserved. Powered by [Ocean Protocol](https://oceanprotocol.com). Built by [deltaDAO](https://delta-dao.com).",
     "menu": [
       {
+        "name": "About",
+        "link": "/about"
+      },
+      {
+        "name": "Catalogue",
+        "link": "/catalogue"
+      },
+      {
         "name": "Publish",
         "link": "/publish"
       },
       {
-        "name": "Verify",
-        "link": "/verify"
-      },
-      {
         "name": "Profile",
         "link": "/profile"
-      },
-      {
-        "name": "Ecosystem",
-        "subItems": [
-          {
-            "name": "Catalogue",
-            "link": "https://catalogue.minimal-gaia-x.eu"
-          },
-          {
-            "name": "Exchange Logging",
-            "link": "https://exchangelog.minimal-gaia-x.eu"
-          },
-          {
-            "name": "Stats Page",
-            "link": "https://stats.minimal-gaia-x.eu"
-          },
-          {
-            "name": "Portals",
-            "subItems": [
-              {
-                "name": "Forever on the blockchain",
-                "link": "https://forever.portal.minimal-gaia-x.eu"
-              },
-              {
-                "name": "EuProGigant",
-                "link": "https://euprogigant.portal.minimal-gaia-x.eu"
-              },
-              {
-                "name": "safeFBDC",
-                "link": "https://safefbdc.portal.minimal-gaia-x.eu"
-              },
-              {
-                "name": "Universitat de Lleida",
-                "link": "https://udl.portal.minimal-gaia-x.eu"
-              }
-            ]
-          }
-        ]
       }
     ],
     "warning": {
