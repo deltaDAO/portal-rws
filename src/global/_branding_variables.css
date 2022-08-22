@@ -21,6 +21,7 @@
   --color-primary: var(--brand-blue-dark);
 
   --background-fill-colored: var(--brand-blue-dark);
+  --background-fill-light: var(--brand-grey-white);
 
   /* menubar */
   --color-menu-active: var(--brand-blue-light);
@@ -74,4 +75,6 @@
   --font-weight-light: 300;
   --font-weight-base: 400;
   --font-weight-bold: 500;
+
+  --line-height: 2;
 }

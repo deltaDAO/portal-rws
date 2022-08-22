@@ -1,44 +1,73 @@
 .container {
-  margin: var(--spacer);
-  margin-top: calc(var(--spacer) * 5);
+  display: flex;
+  flex-direction: column;
 }
 
-@media screen and (min-width: 54rem) {
-  .paragraph {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: right;
-  }
-
-  .paragraph.mirror {
-    flex-direction: row-reverse;
-    text-align: left;
-  }
+.teaser p {
+  margin-bottom: calc(var(--spacer) * 1.5);
 }
 
-.teaser {
-  margin-bottom: calc(var(--spacer) * 2);
-  text-align: center;
+.secondarySection {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacer) * 2);
 }
 
-.paragraph > * {
-  flex: 1 1 0;
-  margin-top: calc(var(--spacer) * 2);
+.points {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacer) / 2);
 }
 
-.interactivity {
-  max-width: 35rem;
-  margin: auto;
+.points span {
+  display: flex;
+  gap: calc(var(--spacer) / 2);
+  justify-content: flex-start;
 }
 
-.content {
+.checkmark,
+.eye {
+  margin: 0;
+}
+
+.checkmark {
+  fill: var(--brand-green);
+}
+
+.eye {
+  width: 2rem;
+  stroke: var(--brand-green);
+}
+
+.pointText {
+  font-weight: var(--font-weight-bold);
+}
+
+.pointText p,
+.heading h3 {
+  margin-bottom: 0;
+}
+
+.heading {
+  display: flex;
+  gap: calc(var(--spacer) / 4);
+  margin-bottom: calc(var(--spacer) / 2);
+}
+
+.onboarding {
   padding: var(--spacer);
+  background-color: var(--background-fill-light);
 }
 
-.content button,
-.content a[class*='button'] {
-  display: block;
-  margin: var(--spacer) auto;
-  margin-right: auto;
+@media screen and (min-width: 40rem) {
+  .container {
+    flex-direction: row;
+    gap: calc(var(--spacer) * 3);
+  }
+  .teaser {
+    width: 60%;
+  }
+  .secondarySection {
+    width: 40%;
+  }
 }
