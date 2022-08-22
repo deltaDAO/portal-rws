@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
 :root {
   --brand-pink: #46daff;
@@ -20,6 +20,9 @@
 
   --color-primary: var(--brand-blue-dark);
 
+  --background-fill-colored: var(--brand-blue-dark);
+
+  /* menubar */
   --color-menu-active: var(--brand-blue-light);
   --font-color-menu: var(--brand-blue-dark);
   --border-color-menu: var(--brand-blue-dark);
@@ -28,6 +31,8 @@
   --border-size-menu-icon: 0px;
   --icon-fill: var(--brand-blue-dark);
   --icon-fill-inverted: var(--brand-white);
+
+  /* footer */
 
   --brand-gradient: linear-gradient(
     to right bottom,
@@ -51,6 +56,9 @@
     var(--brand-cyan)
   );
 
+  --font-color-text: var(--brand-blue-dark);
+  --font-color-text-inverted: var(--brand-white);
+
   -brand-grey-darker: #0f183f;
   --brand-grey-dark: #0c1b5a;
   --brand-grey: #6c7393;
@@ -63,6 +71,7 @@
   --font-family-heading: 'Poppins', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Helvetica, Arial, sans-serif;
 
+  --font-weight-light: 300;
   --font-weight-base: 400;
   --font-weight-bold: 500;
 }

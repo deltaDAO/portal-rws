@@ -2,7 +2,7 @@
   text-transform: capitalize;
   display: inline-flex;
   align-items: center;
-  color: var(--color-secondary);
+  color: var(--font-color-text);
 }
 
 .icon {
@@ -22,7 +22,7 @@
   width: 0;
 }
 
-.minimal:hover .name {
+/* .minimal:hover .name {
   width: auto;
   opacity: 1;
-}
+} */

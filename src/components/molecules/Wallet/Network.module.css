@@ -1,5 +1,5 @@
 .network {
-  border: var(--border-size) solid var(--border-color-menu);
+  border: var(--border-size-menu-button) solid var(--border-color-menu);
   border-right: none;
   border-top-left-radius: var(--border-radius-menu);
   border-bottom-left-radius: var(--border-radius-menu);
@@ -16,8 +16,8 @@
 
 .badge {
   margin-left: calc(var(--spacer) / 8);
-  background-color: var(--border-color);
-  color: var(--font-color-text);
+  background-color: var(--border-color-menu);
+  color: var(--font-color-text-inverted);
 }
 
 .warning {

@@ -19,6 +19,13 @@ interface UseSiteMetadata {
       }[]
     }[]
   }[]
+  footer: {
+    designedBy: string
+    links: {
+      label: string
+      link: string
+    }[]
+  }
   warning: {
     main: string
     polygonPublish: string
@@ -61,6 +68,13 @@ const query = graphql`
         menu {
           name
           link
+        }
+        footer {
+          designedBy
+          links {
+            label
+            link
+          }
         }
         warning {
           main
