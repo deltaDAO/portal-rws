@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { ReactComponent as LogoAssetFull } from '@oceanprotocol/art/logo/logo.svg'
-import { ReactComponent as LogoAssetBranding } from '../../images/gaia-x-logo.svg'
+import { ReactComponent as LogoAssetBranding } from '../../images/fmdm-logo.svg'
 import { ReactComponent as LogoAsset } from '../../images/ocean-logo.svg'
 import styles from './Logo.module.css'
 import classNames from 'classnames/bind'
@@ -15,7 +15,7 @@ export default function Logo({
   branding?: boolean
 }): ReactElement {
   const styleClasses = cx({
-    logo: true,
+    logo: !branding,
     branding: branding
   })
 
