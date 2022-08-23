@@ -2,10 +2,9 @@ import React, { ReactElement } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Markdown from '../atoms/Markdown'
 import styles from './HomeContent.module.css'
-import Button from '../atoms/Button'
 import Container from '../atoms/Container'
 import { ReactComponent as Checkmark } from '../../images/checkmark.svg'
-import { ReactComponent as Eye } from '../../images/eye.svg'
+import HighlightBox from '../molecules/HighlightBox'
 
 const query = graphql`
 {
@@ -82,21 +81,17 @@ export default function HomeContent({
               </span>
             ))}
           </div>
-          <div className={styles.onboarding}>
-            <span className={styles.heading}>
-              <Eye className={styles.eye} />
-              <h3>{firstTimeVisiting.title}</h3>
-            </span>
-            <Markdown text={firstTimeVisiting.text} />
-            <Button
-              style="primary"
-              onClick={() => setShowOnboarding(!showOnboarding)}
-            >
-              {showOnboarding
+          <HighlightBox
+            icon="eye"
+            title={firstTimeVisiting.title}
+            body={firstTimeVisiting.text}
+            buttonLabel={
+              showOnboarding
                 ? firstTimeVisiting.buttonLabels.hide
-                : firstTimeVisiting.buttonLabels.show}
-            </Button>
-          </div>
+                : firstTimeVisiting.buttonLabels.show
+            }
+            onClick={() => setShowOnboarding(!showOnboarding)}
+          />
         </div>
       </div>
     </Container>

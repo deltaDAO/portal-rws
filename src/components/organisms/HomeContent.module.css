@@ -29,38 +29,17 @@
   justify-content: flex-start;
 }
 
-.checkmark,
-.eye {
-  margin: 0;
-}
-
 .checkmark {
+  margin: 0;
   fill: var(--brand-green);
-}
-
-.eye {
-  width: 2rem;
-  stroke: var(--brand-green);
 }
 
 .pointText {
   font-weight: var(--font-weight-bold);
 }
 
-.pointText p,
-.heading h3 {
+.pointText p {
   margin-bottom: 0;
-}
-
-.heading {
-  display: flex;
-  gap: calc(var(--spacer) / 4);
-  margin-bottom: calc(var(--spacer) / 2);
-}
-
-.onboarding {
-  padding: var(--spacer);
-  background-color: var(--background-fill-light);
 }
 
 @media screen and (min-width: 55rem) {

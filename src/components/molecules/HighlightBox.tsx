@@ -1,0 +1,38 @@
+import React, { ReactElement } from 'react'
+import styles from './HighlightBox.module.css'
+import Markdown from '../atoms/Markdown'
+import Button from '../atoms/Button'
+import { ReactComponent as Eye } from '../../images/eye.svg'
+import { ReactComponent as Catalogue } from '../../images/catalogueIcon.svg'
+
+const icons = {
+  eye: <Eye />,
+  catalogue: <Catalogue />
+}
+
+export default function HighlightBox({
+  icon,
+  title,
+  body,
+  buttonLabel,
+  onClick
+}: {
+  icon: keyof typeof icons
+  title: string
+  body: string
+  buttonLabel: string
+  onClick: () => void
+}): ReactElement {
+  return (
+    <div className={styles.container}>
+      <span className={styles.heading}>
+        <span className={styles.icon}>{icons[icon]}</span>
+        <h3>{title}</h3>
+      </span>
+      <Markdown text={body} />
+      <Button style="primary" onClick={onClick}>
+        {buttonLabel}
+      </Button>
+    </div>
+  )
+}
