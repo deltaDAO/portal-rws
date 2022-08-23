@@ -50,9 +50,16 @@
   --algo-label-font-color: var(--brand-white);
   --dataset-label-background: var(--brand-green-light);
   --dataset-label-font-color: var(--brand-white);
-  --font-text-color-teaser: var(--brand-grey);
+  --font-color-text-teaser: var(--brand-grey);
   --border-teaser: 2px solid var(--brand-grey-white);
   --border-radius-teaser: 5px;
+
+  /* search filters */
+  --border-filter: 2px solid var(--brand-grey);
+  --border-radius-filter: 5px;
+  --font-color-text-filter: var(--brand-grey);
+  --background-selected-filter: var(--brand-grey);
+  --font-color-text-selected-filter: var(--brand-blue-dark);
 
   --brand-gradient: linear-gradient(
     to right bottom,
