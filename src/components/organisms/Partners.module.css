@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: var(--spacer);
+}
+
+.logo,
+.container svg {
+  height: 5rem;
+  width: 10rem;
+  object-fit: contain;
+}
+
+.oceanLogo {
+  margin: 0 auto;
+}

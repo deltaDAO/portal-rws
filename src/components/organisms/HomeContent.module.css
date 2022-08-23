@@ -1,3 +1,7 @@
+.wrapper {
+  margin-top: calc(var(--spacer) * 3);
+}
+
 .container {
   display: flex;
   flex-direction: column;

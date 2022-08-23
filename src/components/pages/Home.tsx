@@ -17,6 +17,7 @@ import OnboardingSection from './Home/Onboarding'
 import PromotionBanner from '../molecules/PromotionBanner'
 import { graphql, useStaticQuery } from 'gatsby'
 import Header from './Home/Header'
+import Partners from '../organisms/Partners'
 
 function sortElements(items: DDO[], sorted: string[]) {
   items.sort(function (a, b) {
@@ -167,6 +168,7 @@ export default function HomePage(): ReactElement {
     <Permission eventType="browse">
       <>
         <Header />
+        <Partners />
         <section className={styles.content}>
           <HomeContent />
         </section>

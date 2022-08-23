@@ -59,7 +59,7 @@ export default function HomeContent(): ReactElement {
   const { teaser, points, firstTimeVisiting } = data.file.childIndexJson.content
 
   return (
-    <Container>
+    <Container className={styles.wrapper}>
       <h2>{teaser.title}</h2>
       <div className={styles.container}>
         <div className={styles.teaser}>
