@@ -29,7 +29,7 @@
       "links": [
         { "label": "About this demo", "link": "/about" },
         { "label": "About Gaia-X", "link": "/gaia-x" },
-        { "label": "Catalogue", "link": "/catalogue" },
+        { "label": "Catalogue", "link": "/search" },
         { "label": "First time visiting", "link": "/onboarding" }
       ]
     },

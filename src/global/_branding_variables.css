@@ -14,6 +14,7 @@
   --brand-green-dark: #108a43;
   --brand-white: #ffffff;
   --brand-grey-white: #f9f9f9;
+  --brand-grey: #aeaeae;
   --brand-greyish: #d8d8d8;
 
   --brand-black: #000046;
@@ -43,6 +44,16 @@
   --button-ghost-background-color: var(--brand-blue-light);
   --button-background-color-hover: var(--brand-white);
 
+  /* asset teaser */
+  --border-color-teaser: var(--brand-grey-white);
+  --algo-label-background: var(--brand-green);
+  --algo-label-font-color: var(--brand-white);
+  --dataset-label-background: var(--brand-green-light);
+  --dataset-label-font-color: var(--brand-white);
+  --font-text-color-teaser: var(--brand-grey);
+  --border-teaser: 2px solid var(--brand-grey-white);
+  --border-radius-teaser: 5px;
+
   --brand-gradient: linear-gradient(
     to right bottom,
     var(--color-primary),
@@ -71,7 +82,6 @@
 
   -brand-grey-darker: #0f183f;
   --brand-grey-dark: #0c1b5a;
-  --brand-grey: #6c7393;
   --brand-grey-light: #c6ceef;
   --brand-grey-lighter: #d4d4e2;
   --brand-grey-dimmed: #f1f3f8;

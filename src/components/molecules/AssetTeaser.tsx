@@ -10,6 +10,9 @@ import styles from './AssetTeaser.module.css'
 import LinkOpener from '../molecules/LinkOpener'
 import { BestPrice } from '../../models/BestPrice'
 import Loader from '../atoms/Loader'
+import classNames from 'classnames/bind'
+
+const cx = classNames.bind(styles)
 
 declare type AssetTeaserProps = {
   ddo: DDO
@@ -51,7 +54,11 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
           <AssetType
             type={type}
             accessType={accessType}
-            className={styles.typeDetails}
+            className={cx({
+              typeDetails: true,
+              algo: type === 'algorithm',
+              dataset: type === 'dataset'
+            })}
           />
 
           <div className={styles.content}>
