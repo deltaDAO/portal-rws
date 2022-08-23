@@ -1,0 +1,11 @@
+{
+  "header": {
+    "title": "About this demo",
+    "body": "This demo is a result of collaboration between the Dutch Ministry of Infrastructure and Water Management, The Dutch Blockchain Coalition, Gaia-X, DeltaDAO and Ocean. The aim is to collaborate in order to achieve the best future proof solution for the challenges the mobility sector is facing by practical and open source input for discussion and comparison with other data initiatives. This demo transcends the mostly theoretical and on slideware level discussions about data sharing and makes Gaia-X come to life."
+  },
+  "footer": {
+    "title": "How to join?",
+    "body": "Would you like to contribute to the realization of a future proof solution for the mobility sector or keen to learn more about this initiative? Please contact Harmen van der Kooij via [harmen.vanderkooij@dutchblockchaincoalition.org](mailto:harmen.vanderkooij@dutchblockchaincoalition.org)"
+  },
+  "image": "../../src/images/bridge.png"
+}

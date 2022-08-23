@@ -4,6 +4,9 @@ import { ReactComponent as GaiaX } from '../../images/gaia-x-logo.svg'
 import styles from './Partners.module.css'
 import Container from '../atoms/Container'
 import Logo from '../atoms/Logo'
+import classNames from 'classnames/bind'
+
+const cx = classNames.bind(styles)
 
 const query = graphql`
   {
@@ -37,24 +40,31 @@ interface Logos {
   }
 }
 
-export default function Partners(): ReactElement {
+export default function Partners({
+  className
+}: {
+  className?: string
+}): ReactElement {
   const data: Logos = useStaticQuery(query)
   const { partners } = data
   return (
-    <Container>
-      <div className={styles.container}>
-        {partners?.edges.map((logo) => (
-          <img
-            key={logo.node.childImageSharp.id}
-            className={styles.logo}
-            src={logo.node.childImageSharp.original.src}
-          />
-        ))}
-        <GaiaX />
-        <div className={styles.oceanLogo}>
-          <Logo />
-        </div>
+    <div
+      className={cx({
+        container: true,
+        [className]: className
+      })}
+    >
+      {partners?.edges.map((logo) => (
+        <img
+          key={logo.node.childImageSharp.id}
+          className={styles.logo}
+          src={logo.node.childImageSharp.original.src}
+        />
+      ))}
+      <GaiaX />
+      <div className={styles.oceanLogo}>
+        <Logo />
       </div>
-    </Container>
+    </div>
   )
 }

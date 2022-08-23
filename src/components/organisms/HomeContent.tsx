@@ -1,15 +1,11 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Markdown from '../atoms/Markdown'
 import styles from './HomeContent.module.css'
-import classNames from 'classnames/bind'
 import Button from '../atoms/Button'
 import Container from '../atoms/Container'
-import InteractiveModalImage from '../molecules/InteractiveModalImage'
 import { ReactComponent as Checkmark } from '../../images/checkmark.svg'
 import { ReactComponent as Eye } from '../../images/eye.svg'
-
-const cx = classNames.bind(styles)
 
 const query = graphql`
 {

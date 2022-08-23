@@ -1,9 +1,10 @@
 .container {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--spacer);
   width: 100%;
-  padding: var(--spacer);
+  padding: var(--spacer) 0;
 }
 
 .logo,

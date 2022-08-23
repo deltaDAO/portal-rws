@@ -1,7 +1,6 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import styles from './Home.module.css'
 import AssetList from '../organisms/AssetList'
-import Button from '../atoms/Button'
 import Permission from '../organisms/Permission'
 import { queryMetadata } from '../../utils/aquarius'
 import { DDO, Logger } from '@oceanprotocol/lib'
@@ -10,12 +9,9 @@ import { useIsMounted } from '../../hooks/useIsMounted'
 import { useCancelToken } from '../../hooks/useCancelToken'
 import { SearchQuery } from '../../models/aquarius/SearchQuery'
 import { PagedAssets } from '../../models/PagedAssets'
-import HomeIntro from '../organisms/HomeIntro'
 import HomeContent from '../organisms/HomeContent'
 import Container from '../atoms/Container'
 import OnboardingSection from './Home/Onboarding'
-import PromotionBanner from '../molecules/PromotionBanner'
-import { graphql, useStaticQuery } from 'gatsby'
 import Header from './Home/Header'
 import Partners from '../organisms/Partners'
 
@@ -30,66 +26,6 @@ function sortElements(items: DDO[], sorted: string[]) {
 }
 
 const NUMBER_OF_ASSETS_PER_PAGE = 9
-
-const homePageContentQuery = graphql`
-  query homePageContentQuery {
-    content: allFile(
-      filter: { relativePath: { eq: "promotionBanners.json" } }
-    ) {
-      edges {
-        node {
-          childContentJson {
-            banners {
-              title
-              description
-              link
-              cta
-              image {
-                childImageSharp {
-                  original {
-                    src
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    featuredAssets: file(
-      relativePath: { eq: "pages/index/featuredAssets.json" }
-    ) {
-      childIndexJson {
-        title
-        body
-      }
-    }
-  }
-`
-
-interface HomeContent {
-  content: {
-    edges: {
-      node: {
-        childContentJson: {
-          banners: {
-            title: string
-            description: string
-            link: string
-            cta: string
-            image: { childImageSharp: { original: { src: string } } }
-          }[]
-        }
-      }
-    }[]
-  }
-  featuredAssets: {
-    childIndexJson: {
-      title: string
-      body: string
-    }
-  }
-}
 
 export function SectionQueryResult({
   title,
@@ -159,16 +95,14 @@ export function SectionQueryResult({
 
 export default function HomePage(): ReactElement {
   const [showOnboarding, setShowOnboarding] = useState(false)
-  const data: HomeContent = useStaticQuery(homePageContentQuery)
-  const { content } = data
-
-  const { banners } = content.edges[0].node.childContentJson
 
   return (
     <Permission eventType="browse">
       <>
         <Header />
-        <Partners />
+        <Container>
+          <Partners />
+        </Container>
         <section className={styles.content}>
           <HomeContent
             showOnboarding={showOnboarding}

@@ -1,0 +1,19 @@
+{
+  "title": "About Gaia-X",
+  "body": "Gaia-X is a European initiative to develop a federated data and cloud infrastructure. This is achieved through the development of specifications(1), open-source software components(2) and compliance labels (3) for both the data ecosystem and the underlying cloud infrastructure. Based on European values such as data sovereignty, security and transparency.",
+  "sections": [
+    {
+      "title": "1. Specifications",
+      "text": "The specifications describe how Gaia-X works in terms of policy rules and technical requirements."
+    },
+    {
+      "title": "2. Open-Source Software Code",
+      "text": "The code as a reference implementation automates the core elements of the control and governance framework."
+    },
+    {
+      "title": "3. Compliance labels: a) the Gaia-X Trust framework and b) Gaia-X labels ",
+      "text": "a) Gaia-X Trust Framework\nFor Gaia-X to ensure a higher and unprecedented level of trust in digital platforms trust needs to be an easy to understand and adopted principle. For this reason, Gaia-X developed a Trust framework that safeguards data protection, transparency, security, portability, and flexibility for the ecosystem as well as sovereignty and European Control. The Trust Framework is the set of rules that define the minimum baseline to be part of the Gaia-X Ecosystem. Those rules ensure a common governance and the basic levels of interoperability across individual ecosystems while letting the users in full control of their choices.\n\nb) Gaia-X Labels\nGaia-X is based on European values such as transparency, trust and sovereignty. To make it easier for end users to select services and products that meet those values Gaia-X developed the Labelling framework. The labelling framework is based on the trust framework based on self-descriptions. Thus, it is ensured that all information required to make a qualified choice between different services is available in a consistent and standardised machine-readable form.\n\nA service provider can obtain three different labels, whereby level 3 represents the highest compliance in terms of governance, transparency, data protection, security, portability and European control.\n\nThe labels are automatically applied to a Gaia-X service to evidence its level of trust and ease the adoption by users. The architecture of Gaia-X is based on the key principles of federation, distributed consensus, decentralisation, and regulation by automation, aiming to reduce the complexity, delays and costs associated when verifying the service credentials."
+    }
+  ],
+  "image": "../../src/images/bridge.png"
+}
