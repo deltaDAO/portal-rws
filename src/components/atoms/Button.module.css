@@ -52,9 +52,7 @@
   border: 2px solid var(--button-primary-background-color);
 }
 
-.primary:hover,
-.primary:focus,
-.primary:active {
+.primary:hover {
   color: var(--button-primary-font-color-hover);
   background-color: var(--button-background-color-hover);
 }
@@ -65,9 +63,7 @@
   border: 2px solid var(--button-ghost-background-color);
 }
 
-.ghost:hover,
-.ghost:focus,
-.ghost:active {
+.ghost:hover {
   color: var(--button-ghost-font-color-hover);
   background-color: var(--button-background-color-hover);
 }
@@ -92,15 +88,14 @@
 
 .text,
 .text:hover,
-.text:focus,
-.text:active {
+.text:focus {
   border: 0;
   border-radius: 0;
   outline: 0;
   padding: 0;
   display: inline-block;
   background: 0;
-  color: var(--brand-pink);
+  color: var(--button-text-font-color);
   box-shadow: none;
   cursor: pointer;
   min-width: auto;

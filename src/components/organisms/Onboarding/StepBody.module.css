@@ -47,7 +47,7 @@
 }
 
 .refresh svg {
-  fill: var(--brand-pink);
+  fill: var(--button-text-font-color);
 }
 
 @media screen and (min-width: 60rem) {

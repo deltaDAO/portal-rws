@@ -38,6 +38,7 @@
   --button-font-color: var(--brand-white);
   --button-primary-font-color-hover: var(--brand-blue-dark);
   --button-ghost-font-color-hover: var(--brand-blue-light);
+  --button-text-font-color: var(--brand-blue-light);
   --button-primary-background-color: var(--brand-blue-dark);
   --button-ghost-background-color: var(--brand-blue-light);
   --button-background-color-hover: var(--brand-white);
@@ -66,6 +67,7 @@
 
   --font-color-text: var(--brand-blue-dark);
   --font-color-text-inverted: var(--brand-white);
+  --font-color-heading: var(--brand-blue-dark);
 
   -brand-grey-darker: #0f183f;
   --brand-grey-dark: #0c1b5a;

@@ -26,6 +26,10 @@
   z-index: 2;
 }
 
+.title {
+  font-size: 3.5rem;
+}
+
 .actions {
   display: flex;
   gap: var(--spacer);
