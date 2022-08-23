@@ -33,7 +33,14 @@
   --icon-fill: var(--brand-blue-dark);
   --icon-fill-inverted: var(--brand-white);
 
-  /* footer */
+  /* buttons */
+  --button-border-radius: 5px;
+  --button-font-color: var(--brand-white);
+  --button-primary-font-color-hover: var(--brand-blue-dark);
+  --button-ghost-font-color-hover: var(--brand-blue-light);
+  --button-primary-background-color: var(--brand-blue-dark);
+  --button-ghost-background-color: var(--brand-blue-light);
+  --button-background-color-hover: var(--brand-white);
 
   --brand-gradient: linear-gradient(
     to right bottom,
