@@ -26,7 +26,10 @@ const query = graphql`
         firstTimeVisiting {
           title
           text
-          buttonLabel
+          buttonLabels {
+            hide
+            show
+          }
         }
       }
     }
@@ -47,14 +50,23 @@ interface HomeContentData {
         firstTimeVisiting: {
           title: string
           text: string
-          buttonLabel: string
+          buttonLabels: {
+            hide: string
+            show: string
+          }
         }
       }
     }
   }
 }
 
-export default function HomeContent(): ReactElement {
+export default function HomeContent({
+  showOnboarding,
+  setShowOnboarding
+}: {
+  showOnboarding: boolean
+  setShowOnboarding: (value: boolean) => void
+}): ReactElement {
   const data: HomeContentData = useStaticQuery(query)
   const { teaser, points, firstTimeVisiting } = data.file.childIndexJson.content
 
@@ -80,7 +92,14 @@ export default function HomeContent(): ReactElement {
               <h3>{firstTimeVisiting.title}</h3>
             </span>
             <Markdown text={firstTimeVisiting.text} />
-            <Button>{firstTimeVisiting.buttonLabel}</Button>
+            <Button
+              style="primary"
+              onClick={() => setShowOnboarding(!showOnboarding)}
+            >
+              {showOnboarding
+                ? firstTimeVisiting.buttonLabels.hide
+                : firstTimeVisiting.buttonLabels.show}
+            </Button>
           </div>
         </div>
       </div>

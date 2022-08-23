@@ -170,7 +170,10 @@ export default function HomePage(): ReactElement {
         <Header />
         <Partners />
         <section className={styles.content}>
-          <HomeContent />
+          <HomeContent
+            showOnboarding={showOnboarding}
+            setShowOnboarding={setShowOnboarding}
+          />
         </section>
         {showOnboarding && (
           <section className={styles.content}>
