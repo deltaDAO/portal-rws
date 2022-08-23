@@ -1,0 +1,67 @@
+.header {
+  --image-height: 50rem;
+  position: relative;
+  height: var(--image-height);
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  padding-top: var(--spacer);
+  padding-bottom: var(--spacer);
+}
+
+.content {
+  max-width: 32rem;
+  margin: auto 0;
+}
+
+.title,
+.body {
+  color: var(--font-color-text-inverted);
+  z-index: 2;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacer);
+  width: 100%;
+}
+
+.image {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  height: var(--image-height);
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.carouselIndicators {
+  --indicator-size: 8px;
+  display: flex;
+  gap: var(--indicator-size);
+  align-self: flex-start;
+}
+
+.indicator {
+  height: var(--indicator-size);
+  width: var(--indicator-size);
+  background-color: var(--font-color-text-inverted);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.active {
+  background-color: var(--font-color-text);
+}

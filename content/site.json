@@ -1,7 +1,7 @@
 {
   "site": {
     "siteTitle": "Future Mobility Data Marketplace",
-    "siteTagline": "Solving mobility challenges.",
+    "siteTagline": "Solving mobility challenges",
     "siteUrl": "https://rws.portal.minimal-gaia-x.eu",
     "siteIcon": "./src/images/siteIcon.png",
     "siteImage": "../src/images/share.png",

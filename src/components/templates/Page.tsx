@@ -39,7 +39,7 @@ export default function Page({
   return (
     <>
       <Seo title={title} description={description} uri={uri} />
-      {isHome ? childElements : <Container>{childElements}</Container>}
+      {isHome ? <>{children}</> : <Container>{childElements}</Container>}
     </>
   )
 }
