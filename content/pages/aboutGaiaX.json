@@ -15,5 +15,21 @@
       "text": "a) Gaia-X Trust Framework\nFor Gaia-X to ensure a higher and unprecedented level of trust in digital platforms trust needs to be an easy to understand and adopted principle. For this reason, Gaia-X developed a Trust framework that safeguards data protection, transparency, security, portability, and flexibility for the ecosystem as well as sovereignty and European Control. The Trust Framework is the set of rules that define the minimum baseline to be part of the Gaia-X Ecosystem. Those rules ensure a common governance and the basic levels of interoperability across individual ecosystems while letting the users in full control of their choices.\n\nb) Gaia-X Labels\nGaia-X is based on European values such as transparency, trust and sovereignty. To make it easier for end users to select services and products that meet those values Gaia-X developed the Labelling framework. The labelling framework is based on the trust framework based on self-descriptions. Thus, it is ensured that all information required to make a qualified choice between different services is available in a consistent and standardised machine-readable form.\n\nA service provider can obtain three different labels, whereby level 3 represents the highest compliance in terms of governance, transparency, data protection, security, portability and European control.\n\nThe labels are automatically applied to a Gaia-X service to evidence its level of trust and ease the adoption by users. The architecture of Gaia-X is based on the key principles of federation, distributed consensus, decentralisation, and regulation by automation, aiming to reduce the complexity, delays and costs associated when verifying the service credentials."
     }
   ],
+  "actions": [
+    {
+      "icon": "catalogue",
+      "title": "Catalogue",
+      "body": "Access the catalogue to browse, filter and consume datasets and algorithm service offerings from Gaia-X verified providers.",
+      "buttonLabel": "Go to catalogue",
+      "link": "/catalogue"
+    },
+    {
+      "icon": "eye",
+      "title": "First time visiting",
+      "body": "Before interacting with all the marketplace functionalities, you'll have to ensure you have the correct setup (wallet, testnet, tokens). We can help you jump-start the process!",
+      "buttonLabel": "Quick start guide",
+      "link": "/onboarding"
+    }
+  ],
   "image": "../../src/images/bridge.png"
 }

@@ -15,13 +15,13 @@ export default function HighlightBox({
   title,
   body,
   buttonLabel,
-  onClick
+  link
 }: {
   icon: keyof typeof icons
   title: string
   body: string
   buttonLabel: string
-  onClick: () => void
+  link: string
 }): ReactElement {
   return (
     <div className={styles.container}>
@@ -30,7 +30,7 @@ export default function HighlightBox({
         <h3>{title}</h3>
       </span>
       <Markdown text={body} />
-      <Button style="primary" onClick={onClick}>
+      <Button style="primary" to={link}>
         {buttonLabel}
       </Button>
     </div>

@@ -28,7 +28,7 @@
       "designedBy": "Designed by The Goodplace",
       "links": [
         { "label": "About this demo", "link": "/about" },
-        { "label": "About Gaia-X", "link": "/LINK-TO-ADD" },
+        { "label": "About Gaia-X", "link": "/gaia-x" },
         { "label": "Catalogue", "link": "/catalogue" },
         { "label": "First time visiting", "link": "/onboarding" }
       ]

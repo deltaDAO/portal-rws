@@ -94,8 +94,6 @@ export function SectionQueryResult({
 }
 
 export default function HomePage(): ReactElement {
-  const [showOnboarding, setShowOnboarding] = useState(false)
-
   return (
     <Permission eventType="browse">
       <>
@@ -104,16 +102,8 @@ export default function HomePage(): ReactElement {
           <Partners />
         </Container>
         <section className={styles.content}>
-          <HomeContent
-            showOnboarding={showOnboarding}
-            setShowOnboarding={setShowOnboarding}
-          />
+          <HomeContent />
         </section>
-        {showOnboarding && (
-          <section className={styles.content}>
-            <OnboardingSection />
-          </section>
-        )}
       </>
     </Permission>
   )
