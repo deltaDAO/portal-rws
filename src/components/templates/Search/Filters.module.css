@@ -30,8 +30,7 @@ button.filter,
   padding: calc(var(--spacer) / 4) !important;
 }
 
-.filter:hover,
-.filter:focus {
+.filter:hover {
   color: var(--font-color-text-selected-filter);
   background: var(--background-selected-filter);
   transform: none;
