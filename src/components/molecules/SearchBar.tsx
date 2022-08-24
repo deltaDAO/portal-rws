@@ -53,7 +53,7 @@ export default function SearchBar({
   }, [text, owner])
 
   useEffect(() => {
-    if (!isScrollingToSearchBar || !isSearchBarVisible) return
+    if (!isSearchBarVisible) return
     if (searchBarRef?.current) {
       searchBarRef.current.focus()
     }

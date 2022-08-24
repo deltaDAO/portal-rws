@@ -13,7 +13,7 @@
       },
       {
         "name": "Catalogue",
-        "link": "/search"
+        "link": "/search?sort=_score&sortOrder=desc&text="
       },
       {
         "name": "Publish",
