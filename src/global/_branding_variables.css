@@ -20,9 +20,12 @@
   --brand-black: #000046;
 
   --color-primary: var(--brand-blue-dark);
+  --color-secondary: var(--brand-grey);
 
   --background-fill-colored: var(--brand-blue-dark);
   --background-fill-light: var(--brand-grey-white);
+  --link-color: var(--brand-blue-light);
+  --link-hover-color: var(--brand-blue-light);
 
   /* menubar */
   --color-menu-active: var(--brand-blue-light);
@@ -53,6 +56,7 @@
   --font-color-text-teaser: var(--brand-grey);
   --border-teaser: 2px solid var(--brand-grey-white);
   --border-radius-teaser: 5px;
+  --box-shadow-teaser: none;
 
   /* search filters */
   --border-filter: 2px solid var(--brand-grey);

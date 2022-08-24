@@ -3,7 +3,7 @@
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-bold);
   color: var(--font-color-heading);
-  border: 1px solid var(--border-color);
+  border: var(--border-teaser);
   box-shadow: none;
   width: 100%;
   background: var(--background-content);
@@ -192,7 +192,7 @@
 
 .prefix,
 .postfix {
-  border: 1px solid var(--border-color);
+  border: var(--border-teaser);
   height: 43px;
   display: flex;
   align-items: center;

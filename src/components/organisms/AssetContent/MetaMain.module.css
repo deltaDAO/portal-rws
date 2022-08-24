@@ -9,7 +9,7 @@
   margin-right: -2rem;
   padding-left: 2rem;
   padding-right: 3rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border-teaser);
   margin-bottom: calc(var(--spacer) / 1.5);
   padding-bottom: calc(var(--spacer) / 1.75);
 }
@@ -31,7 +31,7 @@
 
 .assetType {
   display: inline-block;
-  border-right: 1px solid var(--border-color);
+  border-right: var(--border-teaser);
   padding-right: calc(var(--spacer) / 3.5);
   margin-right: calc(var(--spacer) / 4);
 }
@@ -51,7 +51,7 @@
 
 .addWrap {
   padding-left: calc(var(--spacer) / 5);
-  border-left: 1px solid var(--border-color);
+  border-left: var(--border-teaser);
   display: inline-block;
 }
 

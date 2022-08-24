@@ -14,7 +14,7 @@
 .tooltipStats {
   margin-bottom: calc(var(--spacer) / 3);
   padding-bottom: calc(var(--spacer) / 3);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border-teaser);
 }
 
 .network {

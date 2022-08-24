@@ -39,7 +39,7 @@ body {
 
 a {
   text-decoration: none;
-  color: var(--brand-pink);
+  color: var(--link-color);
   transition: 0.2s ease-out;
 }
 
@@ -147,7 +147,7 @@ table td {
   border: 0;
   margin: 0;
   padding: calc(var(--spacer) / 2);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border-teaser);
   text-align: left;
   font-size: 90%;
 }
