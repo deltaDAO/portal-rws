@@ -17,8 +17,7 @@
   margin: calc(var(--spacer) / 3);
 }
 
-.scroll,
-.tutorialScroll {
+.scroll {
   border-top: var(--border-teaser);
   margin-top: calc(var(--spacer) / 4);
   min-height: fit-content;
@@ -27,10 +26,6 @@
   /* smooth overflow scrolling for pre-iOS 13 */
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-}
-
-.tutorialScroll {
-  max-height: 27vh;
 }
 
 .row {

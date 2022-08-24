@@ -9,6 +9,7 @@ import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import { useAccountPurgatory } from '../hooks/useAccountPurgatory'
 import styles from './App.module.css'
 import PrivacyPreferenceCenter from './organisms/PrivacyPreferenceCenter'
+import { useUserPreferences } from '../providers/UserPreferences'
 
 const contentQuery = graphql`
   query AppQuery {
@@ -39,6 +40,10 @@ export default function App({
   const { accountId } = useWeb3()
   const { isInPurgatory, purgatoryData } = useAccountPurgatory(accountId)
 
+  const { isSearchBarVisible } = useUserPreferences()
+  const isHome = window.location.pathname === '/'
+  const isSearch = window.location.pathname === '/search'
+
   return (
     <Styles>
       <div className={styles.app}>
@@ -52,7 +57,15 @@ export default function App({
             state="error"
           />
         )}
-        <main className={styles.main}>{children}</main>
+        <main
+          className={
+            isHome || isSearch || !isSearchBarVisible
+              ? styles.main
+              : styles.mainNoPaddingTop
+          }
+        >
+          {children}
+        </main>
         <Footer />
 
         {appConfig.privacyPreferenceCenter === 'true' && (

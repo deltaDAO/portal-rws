@@ -11,9 +11,9 @@ import { SearchQuery } from '../../models/aquarius/SearchQuery'
 import { PagedAssets } from '../../models/PagedAssets'
 import HomeContent from '../organisms/HomeContent'
 import Container from '../atoms/Container'
-import OnboardingSection from './Home/Onboarding'
 import Header from './Home/Header'
 import Partners from '../organisms/Partners'
+import SearchForm from '../organisms/SearchForm'
 
 function sortElements(items: DDO[], sorted: string[]) {
   items.sort(function (a, b) {
