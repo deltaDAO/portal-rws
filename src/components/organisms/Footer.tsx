@@ -2,7 +2,6 @@ import React, { ReactElement } from 'react'
 import styles from './Footer.module.css'
 import Markdown from '../atoms/Markdown'
 import { useSiteMetadata } from '../../hooks/useSiteMetadata'
-import { Link } from 'gatsby'
 import { useUserPreferences } from '../../providers/UserPreferences'
 import Button from '../atoms/Button'
 import { useGdprMetadata } from '../../hooks/useGdprMetadata'
@@ -12,7 +11,6 @@ import Container from '../atoms/Container'
 export default function Footer(): ReactElement {
   const { copyright, appConfig, footer } = useSiteMetadata()
   const { setShowPPC } = useUserPreferences()
-  const { privacyPolicySlug } = useUserPreferences()
 
   const cookies = useGdprMetadata()
 
@@ -47,9 +45,21 @@ export default function Footer(): ReactElement {
               </span>
             </div>
             <div className={styles.legal}>
-              <Link to="/imprint">Imprint</Link>
+              <Button
+                className={styles.linkButton}
+                style="text"
+                href="https://portal.minimal-gaia-x.eu/imprint"
+              >
+                Imprint
+              </Button>
               {' — '}
-              <Link to={privacyPolicySlug}>Privacy</Link>
+              <Button
+                className={styles.linkButton}
+                style="text"
+                href="https://portal.minimal-gaia-x.eu/privacy/en"
+              >
+                Privacy
+              </Button>
               {appConfig.privacyPreferenceCenter === 'true' && (
                 <>
                   {' — '}
