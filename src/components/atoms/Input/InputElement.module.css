@@ -112,6 +112,7 @@
 .checkbox {
   composes: input;
   position: relative;
+  border-color: var(--color-primary);
   padding: 0;
   width: 18px;
   height: 18px;
@@ -157,8 +158,9 @@
 .radio::after {
   width: 8px;
   height: 8px;
-  top: 4px;
-  left: 4px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: var(--brand-white);
 }
 
