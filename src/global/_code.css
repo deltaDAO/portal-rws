@@ -15,7 +15,7 @@ pre {
   display: block;
   margin: calc(var(--spacer) / 2) 0;
   padding: calc(var(--spacer) / 2);
-  background-color: var(--background-highlight) !important;
+  background-color: var(--background-markdown-code) !important;
   border-radius: var(--border-radius);
   overflow: auto;
   -webkit-overflow-scrolling: touch;

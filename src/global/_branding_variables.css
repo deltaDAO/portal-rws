@@ -24,6 +24,7 @@
 
   --background-fill-colored: var(--brand-blue-dark);
   --background-fill-light: var(--brand-grey-white);
+  --background-markdown-code: var(--brand-grey-white);
   --link-color: var(--brand-blue-light);
   --link-hover-color: var(--brand-blue-light);
 
