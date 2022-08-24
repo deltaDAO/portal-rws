@@ -1,9 +1,6 @@
 import React, { ReactElement } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import { ReactComponent as GaiaX } from '../../images/gaia-x-logo.svg'
 import styles from './Partners.module.css'
-import Container from '../atoms/Container'
-import Logo from '../atoms/Logo'
 import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
@@ -61,10 +58,6 @@ export default function Partners({
           src={logo.node.childImageSharp.original.src}
         />
       ))}
-      <GaiaX />
-      <div className={styles.oceanLogo}>
-        <Logo />
-      </div>
     </div>
   )
 }
