@@ -35,7 +35,7 @@
 .button {
   color: var(--color-secondary);
   cursor: pointer;
-  background: var(--background-content);
+  background: var(--background-fill-light);
   border: none;
   box-shadow: none;
   padding: 0;
@@ -48,6 +48,7 @@
   bottom: 1px;
   z-index: -1;
 }
+
 .visibleInputButton {
   color: var(--color-secondary);
   cursor: pointer;
@@ -82,8 +83,8 @@
 }
 
 .visibleInput {
-  background-color: var(--background-content);
-  border: var(--border-size) solid var(--brand-grey-light);
+  background-color: var(--background-fill-light);
+  border: var(--border-teaser);
   border-radius: 0 var(--border-radius-menu) var(--border-radius-menu) 0;
   cursor: text;
   max-width: 100%;
@@ -101,7 +102,7 @@
 
 .input:focus {
   width: calc(100% - var(--spacer));
-  background-color: var(--background-content);
+  background-color: var(--background-fill-light);
   position: fixed;
   left: calc(var(--spacer) / 2);
   right: 0;
@@ -119,12 +120,12 @@
 }
 
 .visibleInputSearchIcon {
-  fill: var(--brand-grey-light);
+  fill: var(--color-primary);
   transition: 0.2s ease-out;
   width: var(--font-size-base);
   height: var(--font-size-base);
 }
 
 .input:hover .searchIcon {
-  fill: var(--color-menu-active);
+  fill: var(--color-primary);
 }
