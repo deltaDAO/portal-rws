@@ -21,7 +21,7 @@
       "title": "Catalogue",
       "body": "Access the catalogue to browse, filter and consume datasets and algorithm service offerings from Gaia-X verified providers.",
       "buttonLabel": "Go to catalogue",
-      "link": "/catalogue"
+      "link": "/search?sort=_score&sortOrder=desc&text="
     },
     {
       "icon": "eye",
