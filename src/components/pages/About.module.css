@@ -22,6 +22,28 @@
   padding: var(--spacer) 0;
 }
 
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer);
+}
+
+.contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacer);
+}
+
+.contactText {
+  display: inline;
+}
+
+.contacts img {
+  margin: 0;
+  width: 10rem;
+}
+
 .media img {
   margin: 0;
   width: 100%;

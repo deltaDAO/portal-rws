@@ -7,13 +7,8 @@
   padding: var(--spacer) 0;
 }
 
-.logo,
-.container svg {
+.logo {
+  margin: 0;
   height: 5rem;
-  width: 10rem;
   object-fit: contain;
-}
-
-.oceanLogo {
-  margin: 0 auto;
 }

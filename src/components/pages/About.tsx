@@ -18,6 +18,16 @@ const aboutPageQuery = graphql`
             footer {
               title
               body
+              contacts {
+                image {
+                  childImageSharp {
+                    original {
+                      src
+                    }
+                  }
+                }
+                text
+              }
             }
             image {
               childImageSharp {
@@ -44,6 +54,16 @@ interface AboutContent {
           footer: {
             title: string
             body: string
+            contacts: {
+              image: {
+                childImageSharp: {
+                  original: {
+                    src: string
+                  }
+                }
+              }
+              text: string
+            }[]
           }
           image: {
             childImageSharp: {
@@ -69,11 +89,19 @@ export default function AboutPage(): ReactElement {
         <h2 className={styles.title}>{header.title}</h2>
         <Markdown className={styles.body} text={header.body} />
         <div className={styles.partnersContainer}>
-          <span>Partners</span>
+          <span>Founding Partners:</span>
           <Partners className={styles.partners} />
         </div>
         <h2 className={styles.title}>{footer.title}</h2>
         <Markdown className={styles.body} text={footer.body} />
+        <div className={styles.contacts}>
+          {footer.contacts.map((e, i) => (
+            <div className={styles.contact} key={i}>
+              <img src={e.image.childImageSharp.original.src} />
+              <Markdown className={styles.contactText} text={e.text} />
+            </div>
+          ))}
+        </div>
       </div>
       <div className={styles.media}>
         <img

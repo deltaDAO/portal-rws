@@ -1,11 +1,21 @@
 {
   "header": {
     "title": "About this demo",
-    "body": "This demo is a result of collaboration between the Dutch Ministry of Infrastructure and Water Management, The Dutch Blockchain Coalition, and deltaDAO. The aim is to collaborate in order to achieve the best future proof solution for the challenges the mobility sector is facing by practical and open source input for discussion and comparison with other data initiatives. This demo transcends the mostly theoretical and on slideware level discussions about data sharing and makes Gaia-X come to life."
+    "body": "This environment has been built for Rijkswaterstaat (part of the Dutch Ministry of Infrastructure and Water Management). It aims at facilitating the discussion and awareness building about how different types of data, collected by Rijkswaterstaat, can be leveraged for solving societal challenges.\n\nWhich data can be shared as open data, which not? Which data should be free, which paid? What options exist to materialize Rijkswaterstaat data? How to set fair and market conform pricing on data? What options exist to collaborate with third party organization for providing data access to restricted data, keeping security and privacy in mind? What is the EU Gaia-X initiative and what advantages could this offer for data sharing across borders? How does Gaia-X relate to existing data sharing initiatives and which different Gaia-X implementations exist already?\n\nObjectives:\n- Implement an open source, practical example to discuss future proof data sharing\n- Learn about cross-border data sharing and latest Gaia-X concepts\n- Use an example Gaia-X implementation for comparison with other data sharing initiatives (not to compete but to collaborate on achieving the best future proof solution)\n- Provide a base infrastructure that may be leveraged for hackathons, proof of concepts collaboration with other organizations;\n\nThese topics apply to many other public and private organizations in the Netherlands and other countries. In upcoming phases interested public and private organization from the Netherlands or other countries can start participating on this initiative. For instance, by adding datasets or algorithms to the marketplace."
   },
   "footer": {
     "title": "How to join?",
-    "body": "Would you like to contribute to the realization of a future proof solution for the mobility sector or keen to learn more about this initiative? Please contact Harmen van der Kooij via [harmen.vanderkooij@dutchblockchaincoalition.org](mailto:harmen.vanderkooij@dutchblockchaincoalition.org)"
+    "body": "For more information on this environment or how to get involved and participate in potential next steps please contact:",
+    "contacts": [
+      {
+        "image": "../../src/images/contacts/arthur.png",
+        "text": "[Arthur Maring](mailto:arthur.maring@rws.nl)\n\nInnovation Manager Smart Mobility, Rijkswaterstaat"
+      },
+      {
+        "image": "../../src/images/contacts/harmen.jpeg",
+        "text": "[Harmen van der Kooij](mailto:harmen.vanderkooij@dutchblockchaincoalition.org)\n\nLead Mobility Track at Dutch Blockchain Coalition"
+      }
+    ]
   },
   "image": "../../src/images/bridge.png"
 }
