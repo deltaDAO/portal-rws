@@ -42,6 +42,8 @@
 .contacts img {
   margin: 0;
   width: 10rem;
+  aspect-ratio: 3/4;
+  object-fit: cover;
 }
 
 .media img {
