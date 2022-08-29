@@ -60,7 +60,7 @@
 
 .links {
   display: grid;
-  grid-template-columns: repeat(2, calc(var(--spacer) * 6));
+  grid-template-columns: minmax(max-content 1fr);
 }
 
 .copyright {
@@ -72,6 +72,12 @@
 .linkButton {
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-light);
+}
+
+@media screen and (min-width: 25rem) {
+  .links {
+    grid-template-columns: repeat(2, calc(var(--spacer) * 6));
+  }
 }
 
 @media screen and (min-width: 60rem) {
