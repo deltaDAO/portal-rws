@@ -88,11 +88,13 @@ export default function GaiaXPage(): ReactElement {
           </div>
         ))}
       </div>
-      <div className={styles.media}>
-        <img
-          src={image.childImageSharp.original.src}
-          className={styles.image}
-        />
+      <div className={styles.mediaColumn}>
+        <div className={styles.media}>
+          <img
+            src={image.childImageSharp.original.src}
+            className={styles.image}
+          />
+        </div>
         <div className={styles.actions}>
           {actions.map((action) => (
             <HighlightBox

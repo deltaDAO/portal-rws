@@ -1,6 +1,9 @@
 .container {
+  --image-height: 30rem;
+  position: relative;
   display: flex;
   flex-direction: column;
+  padding-top: var(--image-height);
 }
 
 .partnersContainer {
@@ -11,10 +14,6 @@
 
 .partners {
   justify-content: space-around;
-}
-
-.media {
-  order: 1;
 }
 
 .content {
@@ -46,10 +45,19 @@
   object-fit: cover;
 }
 
+.media {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 100vw;
+  height: var(--image-height);
+  order: 1;
+}
+
 .media img {
-  margin: 0;
+  height: 100%;
   width: 100%;
-  height: 30rem;
   object-fit: cover;
 }
 
@@ -57,16 +65,22 @@
   .container {
     flex-direction: row;
     gap: var(--spacer);
+    padding-top: 0;
   }
   .content {
     order: 1;
     width: 60%;
   }
   .media {
+    position: unset;
+    transform: none;
     order: 2;
     width: 40%;
   }
   .media img {
-    height: 40rem;
+    margin: 0;
+    width: 100%;
+    height: var(--image-height);
+    object-fit: cover;
   }
 }
