@@ -7,7 +7,7 @@
   overflow-y: auto;
 }
 
-@media (min-width: 40rem) {
+@media (min-width: 20rem) {
   .sortList {
     align-self: flex-end;
     overflow-y: unset;
@@ -26,7 +26,7 @@
 
 .sorted {
   display: flex;
-  padding: calc(var(--spacer) / 6) calc(var(--spacer) / 2);
+  padding: calc(var(--spacer) / 4);
   margin-right: calc(var(--spacer) / 4);
   color: var(--font-color-text-filter);
   text-transform: capitalize;
