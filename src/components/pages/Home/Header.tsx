@@ -7,8 +7,10 @@ import Button from '../../atoms/Button'
 import { useSiteMetadata } from '../../../hooks/useSiteMetadata'
 import Container from '../../atoms/Container'
 import { animated, useSpringRef, useTransition } from 'react-spring'
+import GatsbyImage from 'gatsby-image'
 
 const cx = classNames.bind(styles)
+const CAROUSEL_SCROLL_TIMEOUT = 20000
 
 const homePageHeaderQuery = graphql`
   query homePageHeaderQuery {
@@ -96,7 +98,7 @@ export default function PageHeader(): ReactElement {
   }, [])
 
   useEffect(() => {
-    const timer = setTimeout(scrollImage, 5000)
+    const timer = setTimeout(scrollImage, CAROUSEL_SCROLL_TIMEOUT)
     return () => {
       clearTimeout(timer)
     }
@@ -106,7 +108,10 @@ export default function PageHeader(): ReactElement {
   const moveAndFadeDiv = useTransition(index, {
     ref: transRef,
     keys: null,
-    initial: { opacity: 1, transform: startPosition },
+    initial: {
+      opacity: 1,
+      transform: startPosition
+    },
     from: {
       opacity: 0,
       transform: fromTranslateRight
@@ -129,15 +134,13 @@ export default function PageHeader(): ReactElement {
           key={carousel.edges[i].node.childImageSharp.id}
           style={style}
         >
-          <div
-            style={{
-              backgroundImage: `linear-gradient(
-                rgba(0, 0, 0, 0.6) 0%,
-                rgba(0, 0, 0, 0.22) 100%
-              ), url(${carousel.edges[i].node.childImageSharp.original.src})`
-            }}
-            className={styles.image}
-          />
+          <div className={styles.carouselImageContainer}>
+            <img
+              className={styles.image}
+              src={carousel.edges[i].node.childImageSharp.original.src}
+              loading="eager"
+            />
+          </div>
         </animated.div>
       ))}
       <Container className={styles.container}>
