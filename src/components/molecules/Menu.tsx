@@ -7,9 +7,9 @@ import { useSiteMetadata } from '../../hooks/useSiteMetadata'
 import UserPreferences from './UserPreferences'
 import Logo from '../atoms/Logo'
 import Networks from './UserPreferences/Networks'
-import SearchBar from './SearchBar'
 import Container from '../atoms/Container'
 import MenuDropdown from '../atoms/MenuDropdown'
+import SearchButton from './SearchButton'
 
 const Wallet = loadable(() => import('./Wallet'))
 
@@ -29,7 +29,7 @@ function MenuLink({ name, link }: { name: string; link: string }) {
 }
 
 export default function Menu(): ReactElement {
-  const { menu, badge } = useSiteMetadata()
+  const { menu } = useSiteMetadata()
 
   return (
     <div className={styles.wrapper}>
@@ -52,7 +52,7 @@ export default function Menu(): ReactElement {
           </ul>
 
           <div className={styles.actions}>
-            <SearchBar />
+            <SearchButton />
             <Networks />
             <Wallet />
             <UserPreferences />

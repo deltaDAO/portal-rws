@@ -4,11 +4,11 @@
   grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
   margin-left: -2rem;
   margin-right: -2rem;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border-teaser);
   padding: var(--spacer);
 
   text-align: center;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border-teaser);
   background: var(--background-highlight);
 }
 

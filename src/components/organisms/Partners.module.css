@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: calc(var(--spacer) / 2);
+  width: 100%;
+  padding: var(--spacer) 0;
+}
+
+.logo {
+  margin: 0;
+  height: 5rem;
+  object-fit: contain;
+}
+
+.container svg {
+  margin: 0;
+  height: 5rem;
+  width: 10rem;
+}
+
+@media screen and (min-width: 40rem) {
+  .container {
+    justify-content: space-between;
+  }
+}

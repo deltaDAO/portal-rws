@@ -1,5 +1,5 @@
 .datatoken {
-  border: 1px solid var(--border-color);
+  border: var(--border-teaser);
   padding: calc(var(--spacer) / 3);
   border-radius: var(--border-radius);
 }

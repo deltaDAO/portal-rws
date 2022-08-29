@@ -5,7 +5,7 @@
   --background-gradient: linear-gradient(
     to right,
     var(--color-primary) 50%,
-    var(--brand-grey-light) 50%
+    var(--brand-greyish) 50%
   );
 }
 
@@ -31,7 +31,7 @@
 }
 
 .step .title {
-  color: var(--brand-grey-light);
+  color: var(--brand-greyish);
   transition: all 0.3s ease-out;
 }
 

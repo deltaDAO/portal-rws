@@ -10,7 +10,7 @@
 }
 
 .table [class~='rdt_TableCol'] {
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border-teaser);
 }
 
 .table [role='columnheader'] {

@@ -10,8 +10,8 @@
   margin-left: -2rem;
   margin-right: -2rem;
   background: var(--background-highlight);
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
+  border-top: var(--border-teaser);
+  border-bottom: var(--border-teaser);
 }
 
 .grid {
@@ -51,7 +51,7 @@
   text-align: center;
   padding-top: calc(var(--spacer) / 3);
   padding-bottom: calc(var(--spacer) / 3);
-  border-top: 1px solid var(--border-color);
+  border-top: var(--border-teaser);
 }
 
 .firstPrice div {

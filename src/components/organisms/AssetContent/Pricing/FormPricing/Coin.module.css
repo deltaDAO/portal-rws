@@ -1,6 +1,6 @@
 .coin {
   padding: var(--spacer) calc(var(--spacer) / 2);
-  border-top: 1px solid var(--border-color);
+  border-top: var(--border-teaser);
 }
 
 .coin:last-child {
@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border-color);
+  border: var(--border-teaser);
   border-radius: 50%;
   background-color: var(--background-body);
   margin-bottom: calc(var(--spacer) / 2);

@@ -1,13 +1,10 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Markdown from '../atoms/Markdown'
 import styles from './HomeContent.module.css'
-import classNames from 'classnames/bind'
-import Button from '../atoms/Button'
 import Container from '../atoms/Container'
-import InteractiveModalImage from '../molecules/InteractiveModalImage'
-
-const cx = classNames.bind(styles)
+import { ReactComponent as Checkmark } from '../../images/checkmark.svg'
+import HighlightBox from '../molecules/HighlightBox'
 
 const query = graphql`
 {
@@ -18,18 +15,14 @@ const query = graphql`
           title
           text
         }
-        paragraphs {
+        points {
+          text
+        }
+        firstTimeVisiting {
           title
-          body
-          cta
-          ctaTo
-          image {
-            childImageSharp {
-              original {
-                src
-              }
-            }
-          }
+          text
+          buttonLabel
+          link
         }
       }
     }
@@ -44,13 +37,15 @@ interface HomeContentData {
           title: string
           text: string
         }
-        paragraphs: {
-          title: string
-          body: string
-          cta: string
-          ctaTo: string
-          image: { childImageSharp: { original: { src: string } } }
+        points: {
+          text: string
         }[]
+        firstTimeVisiting: {
+          title: string
+          text: string
+          buttonLabel: string
+          link: string
+        }
       }
     }
   }
@@ -58,45 +53,31 @@ interface HomeContentData {
 
 export default function HomeContent(): ReactElement {
   const data: HomeContentData = useStaticQuery(query)
-  const { paragraphs, teaser } = data.file.childIndexJson.content
+  const { teaser, points, firstTimeVisiting } = data.file.childIndexJson.content
 
   return (
-    <Container>
+    <Container className={styles.wrapper}>
+      <h2>{teaser.title}</h2>
       <div className={styles.container}>
         <div className={styles.teaser}>
-          <h2>{teaser.title}</h2>
           <Markdown text={teaser.text} />
         </div>
-        <div className={styles.paragraphs}>
-          {paragraphs.map((paragraph, i) => (
-            <div
-              key={paragraph.title}
-              className={
-                i % 2 === 1
-                  ? cx({ paragraph: true, mirror: true })
-                  : styles.paragraph
-              }
-            >
-              <div className={styles.interactivity}>
-                <InteractiveModalImage
-                  src={paragraph.image.childImageSharp.original.src}
-                  alt={paragraph.title}
-                />
-              </div>
-              <div className={styles.content}>
-                <h2>{paragraph.title}</h2>
-                <Markdown text={paragraph.body} />
-                <Button
-                  href={paragraph.ctaTo}
-                  style="primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {paragraph.cta}
-                </Button>
-              </div>
-            </div>
-          ))}
+        <div className={styles.secondarySection}>
+          <div className={styles.points}>
+            {points.map((point, i) => (
+              <span key={i}>
+                <Checkmark className={styles.checkmark} />
+                <Markdown className={styles.pointText} text={point.text} />
+              </span>
+            ))}
+          </div>
+          <HighlightBox
+            icon="eye"
+            title={firstTimeVisiting.title}
+            body={firstTimeVisiting.text}
+            buttonLabel={firstTimeVisiting.buttonLabel}
+            link={firstTimeVisiting.link}
+          />
         </div>
       </div>
     </Container>

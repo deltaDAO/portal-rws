@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { graphql, PageProps, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Alert from './atoms/Alert'
 import Footer from './organisms/Footer'
 import Header from './organisms/Header'
@@ -7,9 +7,9 @@ import Styles from '../global/Styles'
 import { useWeb3 } from '../providers/Web3'
 import { useSiteMetadata } from '../hooks/useSiteMetadata'
 import { useAccountPurgatory } from '../hooks/useAccountPurgatory'
-import AnnouncementBanner from './atoms/AnnouncementBanner'
 import styles from './App.module.css'
 import PrivacyPreferenceCenter from './organisms/PrivacyPreferenceCenter'
+import { useUserPreferences } from '../providers/UserPreferences'
 
 const contentQuery = graphql`
   query AppQuery {
@@ -29,24 +29,24 @@ const contentQuery = graphql`
 `
 
 export default function App({
-  children,
-  ...props
+  children
 }: {
   children: ReactElement
 }): ReactElement {
   const data = useStaticQuery(contentQuery)
   const purgatory = data.purgatory.edges[0].node.childContentJson.account
 
-  const { warning, appConfig } = useSiteMetadata()
+  const { appConfig } = useSiteMetadata()
   const { accountId } = useWeb3()
   const { isInPurgatory, purgatoryData } = useAccountPurgatory(accountId)
+
+  const { isSearchBarVisible } = useUserPreferences()
+  const isHome = window.location.pathname === '/'
+  const isSearch = window.location.pathname === '/search'
 
   return (
     <Styles>
       <div className={styles.app}>
-        {(props as PageProps).uri === '/' && (
-          <AnnouncementBanner text={warning.main} />
-        )}
         <Header />
 
         {isInPurgatory && (
@@ -57,7 +57,15 @@ export default function App({
             state="error"
           />
         )}
-        <main className={styles.main}>{children}</main>
+        <main
+          className={
+            isHome || isSearch || !isSearchBarVisible
+              ? styles.main
+              : styles.mainNoPaddingTop
+          }
+        >
+          {children}
+        </main>
         <Footer />
 
         {appConfig.privacyPreferenceCenter === 'true' && (

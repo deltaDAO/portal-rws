@@ -11,7 +11,7 @@
 
 .title {
   font-size: var(--font-size-large);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border-teaser);
   padding-bottom: calc(var(--spacer) / 2);
   margin-top: -1rem;
   margin-left: -2rem;

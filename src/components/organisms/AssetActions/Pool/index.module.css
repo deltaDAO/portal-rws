@@ -44,7 +44,7 @@
   font-size: var(--font-size-mini);
   color: var(--color-secondary);
   text-align: center;
-  border-top: 1px solid var(--border-color);
+  border-top: var(--border-teaser);
   padding-top: calc(var(--spacer) / 4);
   padding-bottom: calc(var(--spacer) / 4);
 }

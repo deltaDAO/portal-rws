@@ -1,7 +1,6 @@
 .selection {
   padding: 0;
-  border: 1px solid var(--border-color);
-  background-color: var(--background-highlight);
+  border: var(--border-teaser);
   border-radius: var(--border-radius);
   margin-bottom: calc(var(--spacer) / 2);
   font-size: var(--font-size-small);
@@ -19,7 +18,7 @@
 }
 
 .scroll {
-  border-top: 1px solid var(--border-color);
+  border-top: var(--border-teaser);
   margin-top: calc(var(--spacer) / 4);
   min-height: fit-content;
   max-height: 50vh;
@@ -32,7 +31,7 @@
 .row {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border-teaser);
   padding: calc(var(--spacer) / 3) calc(var(--spacer) / 2);
 }
 
