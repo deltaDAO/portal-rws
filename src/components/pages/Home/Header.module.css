@@ -58,8 +58,7 @@
   text-align: center;
   height: var(--image-height);
   width: 100%;
-  background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
 }
 
 .carouselIndicators {

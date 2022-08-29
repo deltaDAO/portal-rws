@@ -13,7 +13,6 @@ import HomeContent from '../organisms/HomeContent'
 import Container from '../atoms/Container'
 import Header from './Home/Header'
 import Partners from '../organisms/Partners'
-import SearchForm from '../organisms/SearchForm'
 
 function sortElements(items: DDO[], sorted: string[]) {
   items.sort(function (a, b) {
