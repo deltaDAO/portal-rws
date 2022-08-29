@@ -7,7 +7,6 @@ import Button from '../../atoms/Button'
 import { useSiteMetadata } from '../../../hooks/useSiteMetadata'
 import Container from '../../atoms/Container'
 import { animated, useSpringRef, useTransition } from 'react-spring'
-import GatsbyImage from 'gatsby-image'
 
 const cx = classNames.bind(styles)
 const CAROUSEL_SCROLL_TIMEOUT = 20000
@@ -113,15 +112,15 @@ export default function PageHeader(): ReactElement {
       transform: startPosition
     },
     from: {
-      opacity: 0,
+      opacity: 1,
       transform: fromTranslateRight
     },
     enter: { opacity: 1, transform: startPosition },
     leave: {
-      opacity: 0,
+      opacity: 1,
       transform: leaveTranslateRight
     },
-    config: { mass: 1, tension: 140, friction: 18 }
+    config: { mass: 1, tension: 170, friction: 26 }
   })
   useEffect(() => {
     transRef.start()
