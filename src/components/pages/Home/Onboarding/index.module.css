@@ -1,15 +1,17 @@
-.wrapper {
-  margin-bottom: calc(var(--spacer) * 4);
-}
-
 .cardWrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 var(--spacer);
+  padding: 0;
 }
 
 .cardContainer {
   composes: box from '../../../atoms/Box.module.css';
   width: 100%;
+}
+
+@media screen and (min-width: 40rem) {
+  .cardWrapper {
+    padding: 0 var(--spacer);
+  }
 }

@@ -7,7 +7,7 @@
 }
 
 .content {
-  padding: var(--spacer);
+  padding: calc(var(--spacer) / 2);
 }
 
 .subtitle {
@@ -20,4 +20,10 @@
 
 .paragraph p {
   margin-bottom: 0;
+}
+
+@media screen and (min-width: 40rem) {
+  .content {
+    padding: var(--spacer);
+  }
 }
