@@ -28,6 +28,7 @@
 .actions {
   order: 2;
   display: flex;
+  margin-left: auto;
 }
 
 .actions > * {
