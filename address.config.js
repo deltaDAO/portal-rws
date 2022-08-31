@@ -1,6 +1,6 @@
 module.exports = {
   whitelists: {
-    'publicKey.owner': [],
+    'publicKey.owner': ['0xa98A6eefbAE870b88a9C7A43f4b50066A01c93b6'],
     dataToken: []
   },
   featured: [

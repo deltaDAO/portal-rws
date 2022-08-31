@@ -1,7 +1,7 @@
 .radioWrap {
   composes: radioWrap from '../../../atoms/Input/InputElement.module.css';
   padding: calc(var(--spacer) / 6) calc(var(--spacer) / 3);
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: var(--border-teaser);
 }
 
 .radioWrap:last-child {

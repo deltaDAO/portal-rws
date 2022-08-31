@@ -59,13 +59,15 @@ export default function Compute({
   file,
   fileIsLoading,
   isConsumable,
-  consumableFeedback
+  consumableFeedback,
+  computeDisclaimerMessage
 }: {
   dtBalance: string
   file: FileMetadata
   fileIsLoading?: boolean
   isConsumable?: boolean
   consumableFeedback?: string
+  computeDisclaimerMessage?: string
 }): ReactElement {
   const { appConfig } = useSiteMetadata()
   const { accountId } = useWeb3()
@@ -94,9 +96,6 @@ export default function Compute({
   const hasDatatoken = Number(dtBalance) >= 1
   const [hasAlgorithmPriceUpdated, setHasAlgorithmPriceUpdated] =
     useState(false)
-
-  const url = new URL(window.location.href)
-  const tutorial = url.pathname === '/tutorial'
 
   const isMounted = useIsMounted()
   const [isConsumablePrice, setIsConsumablePrice] = useState(true)
@@ -152,7 +151,7 @@ export default function Compute({
       sort: { sortBy: SortTermOptions.Created },
       filters: [
         getFilterTerm('service.attributes.main.type', 'algorithm'),
-        getFilterTerm('id', algorithmDidList)
+        getFilterTerm('_id', algorithmDidList)
       ]
     } as BaseQueryParams
 
@@ -485,12 +484,16 @@ export default function Compute({
           />
         </Formik>
       )}
-
+      {computeDisclaimerMessage && (
+        <div className={styles.disclaimer}>
+          <Alert state="info" text={computeDisclaimerMessage} />
+        </div>
+      )}
       <footer className={styles.feedback}>
         {isPublished && (
           <SuccessConfetti
             success="Your job started successfully! Watch the progress below or on your profile."
-            action={!tutorial ? <SuccessAction /> : null}
+            action={<SuccessAction />}
           />
         )}
       </footer>

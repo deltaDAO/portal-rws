@@ -3,7 +3,7 @@
   font-family: var(--font-family-base);
   font-weight: var(--font-weight-bold);
   color: var(--font-color-heading);
-  border: 1px solid var(--border-color);
+  border: var(--border-teaser);
   box-shadow: none;
   width: 100%;
   background: var(--background-content);
@@ -89,6 +89,7 @@
 
 .radioWrap {
   position: relative;
+  display: flex;
 }
 
 .radioLabel {
@@ -111,9 +112,11 @@
 .checkbox {
   composes: input;
   position: relative;
+  border-color: var(--color-primary);
   padding: 0;
   width: 18px;
   height: 18px;
+  min-width: 18px;
   min-height: 0;
   display: inline-block;
   vertical-align: middle;
@@ -155,8 +158,9 @@
 .radio::after {
   width: 8px;
   height: 8px;
-  top: 4px;
-  left: 4px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: var(--brand-white);
 }
 
@@ -192,7 +196,7 @@
 
 .prefix,
 .postfix {
-  border: 1px solid var(--border-color);
+  border: var(--border-teaser);
   height: 43px;
   display: flex;
   align-items: center;

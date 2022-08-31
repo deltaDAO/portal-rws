@@ -19,6 +19,13 @@ interface UseSiteMetadata {
       }[]
     }[]
   }[]
+  footer: {
+    designedBy: string
+    links: {
+      label: string
+      link: string
+    }[]
+  }
   warning: {
     main: string
     polygonPublish: string
@@ -30,7 +37,6 @@ interface UseSiteMetadata {
   badge: string
   appConfig: {
     metadataCacheUri: string
-    vpRegistryUri: string
     complianceUri: string
     infuraProjectId: string
     chainIds: number[]
@@ -61,13 +67,12 @@ const query = graphql`
         menu {
           name
           link
-          subItems {
-            name
+        }
+        footer {
+          designedBy
+          links {
+            label
             link
-            subItems {
-              name
-              link
-            }
           }
         }
         warning {
@@ -81,7 +86,6 @@ const query = graphql`
         badge
         appConfig {
           metadataCacheUri
-          vpRegistryUri
           complianceUri
           infuraProjectId
           chainIds

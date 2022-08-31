@@ -7,7 +7,10 @@
   composes: box from '../atoms/Box.module.css';
   font-size: var(--font-size-small);
   height: 100%;
-  color: var(--color-secondary);
+  color: var(--font-color-text-teaser);
+  border: var(--border-teaser);
+  border-radius: var(--border-radius-teaser);
+  box-shadow: none;
   position: relative;
   /* for sticking footer to bottom */
   display: flex;
@@ -44,8 +47,10 @@
 .foot {
   margin-top: calc(var(--spacer) / 4);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
+  gap: calc(var(--spacer) / 2);
 }
 
 .foot p {
@@ -69,11 +74,30 @@
   right: calc(var(--spacer) / 3);
   width: auto;
   font-size: var(--font-size-mini);
+  border-radius: var(--border-radius-teaser);
+  padding: 5px;
 }
 
-.network {
+.typeDetails.dataset {
+  background-color: var(--dataset-label-background);
+  color: var(--dataset-label-font-color);
+}
+
+.typeDetails.dataset * {
+  border-color: var(--dataset-label-font-color);
+}
+
+.typeDetails.algo {
+  background-color: var(--algo-label-background);
+  color: var(--algo-label-font-color);
+  border-color: var(--algo-label-font-color);
+}
+
+.typeDetails.algo * {
+  border-color: var(--algo-label-font-color);
+}
+
+.network span {
   font-size: var(--font-size-mini);
-  position: absolute;
-  right: calc(var(--spacer) / 3);
-  bottom: calc(var(--spacer) / 3);
+  color: var(--font-color-text-teaser);
 }

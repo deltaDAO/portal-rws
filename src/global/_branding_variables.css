@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
 :root {
   --brand-pink: #46daff;
@@ -6,13 +6,65 @@
   --brand-violet: #b900ff;
   --brand-cyan: #00ffff;
 
+  --brand-blue-light: #316aea;
+  --brand-blue-dark: #00205c;
+  --brand-blue-darker: #040050;
+  --brand-green-light: #87c300;
+  --brand-green: #00b96e;
+  --brand-green-dark: #108a43;
+  --brand-white: #ffffff;
+  --brand-grey-white: #f9f9f9;
+  --brand-grey: #aeaeae;
+  --brand-greyish: #d8d8d8;
+
   --brand-black: #000046;
 
-  --color-primary: #000094;
+  --color-primary: var(--brand-blue-dark);
+  --color-secondary: var(--brand-grey);
 
-  --color-menu-active: #465aff;
-  --border-color-menu: var(--color-primary);
-  --border-radius-menu: 2px;
+  --background-fill-colored: var(--brand-blue-dark);
+  --background-fill-light: var(--brand-grey-white);
+  --background-markdown-code: var(--brand-grey-white);
+  --link-color: var(--brand-blue-light);
+  --link-hover-color: var(--brand-blue-light);
+
+  /* menubar */
+  --color-menu-active: var(--brand-blue-light);
+  --font-color-menu: var(--brand-blue-dark);
+  --border-color-menu: var(--brand-blue-dark);
+  --border-radius-menu: 5px;
+  --border-size-menu-button: 2px;
+  --border-size-menu-icon: 0px;
+  --icon-fill: var(--brand-blue-dark);
+  --icon-fill-inverted: var(--brand-white);
+
+  /* buttons */
+  --button-border-radius: 5px;
+  --button-font-color: var(--brand-white);
+  --button-primary-font-color-hover: var(--brand-blue-dark);
+  --button-ghost-font-color-hover: var(--brand-blue-light);
+  --button-text-font-color: var(--brand-blue-light);
+  --button-primary-background-color: var(--brand-blue-dark);
+  --button-ghost-background-color: var(--brand-blue-light);
+  --button-background-color-hover: var(--brand-white);
+
+  /* asset teaser */
+  --border-color-teaser: var(--brand-grey-white);
+  --algo-label-background: var(--brand-green);
+  --algo-label-font-color: var(--brand-white);
+  --dataset-label-background: var(--brand-green-light);
+  --dataset-label-font-color: var(--brand-white);
+  --font-color-text-teaser: var(--brand-grey);
+  --border-teaser: 2px solid var(--brand-grey-white);
+  --border-radius-teaser: 5px;
+  --box-shadow-teaser: none;
+
+  /* search filters */
+  --border-filter: 2px solid var(--brand-grey);
+  --border-radius-filter: 5px;
+  --font-color-text-filter: var(--brand-grey);
+  --background-selected-filter: var(--brand-grey);
+  --font-color-text-selected-filter: var(--brand-blue-dark);
 
   --brand-gradient: linear-gradient(
     to right bottom,
@@ -36,17 +88,24 @@
     var(--brand-cyan)
   );
 
+  --font-color-text: var(--brand-blue-dark);
+  --font-color-text-inverted: var(--brand-white);
+  --font-color-heading: var(--brand-blue-dark);
+
   -brand-grey-darker: #0f183f;
   --brand-grey-dark: #0c1b5a;
-  --brand-grey: #6c7393;
   --brand-grey-light: #c6ceef;
   --brand-grey-lighter: #d4d4e2;
   --brand-grey-dimmed: #f1f3f8;
 
-  --font-family-base: 'Titillium Web', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Helvetica, Arial, sans-serif;
-  --font-family-heading: 'Titillium Web', -apple-system, BlinkMacSystemFont,
+  --font-family-base: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Helvetica, Arial, sans-serif;
+  --font-family-heading: 'Poppins', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Helvetica, Arial, sans-serif;
 
+  --font-weight-light: 300;
   --font-weight-base: 400;
+  --font-weight-bold: 500;
+
+  --line-height: 2;
 }

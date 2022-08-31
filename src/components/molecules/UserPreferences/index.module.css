@@ -1,7 +1,7 @@
 .preferences {
   padding: calc(var(--spacer) / 6) calc(var(--spacer) / 3);
   cursor: pointer;
-  border: var(--border-size) solid var(--border-color-menu);
+  border: var(--border-size-menu) solid var(--border-color-menu);
   border-radius: var(--border-radius-menu);
   background-color: var(--background-content);
   white-space: nowrap;
@@ -20,7 +20,7 @@
 svg.caret {
   width: var(--font-size-small);
   height: var(--font-size-small);
-  fill: var(--border-color-menu);
+  fill: var(--icon-fill);
   margin-left: calc(var(--spacer) / 4);
   transition: transform 0.2s ease-out;
   display: none;
@@ -34,17 +34,9 @@ svg.caret {
 }
 
 .icon {
-  fill: var(--border-color-menu);
   transition: 0.2s ease-out;
   width: 1em;
   height: 1em;
-}
-
-.preferences:hover .icon,
-.preferences:focus .icon,
-.preferences:active .icon,
-.preferences[aria-expanded='true'] .icon {
-  fill: var(--color-menu-active);
 }
 
 .preferencesDetails {

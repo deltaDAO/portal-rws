@@ -69,10 +69,10 @@ export function getWhitelistShould(): // eslint-disable-next-line camelcase
 }
 
 export function getDynamicPricingMustNot(): // eslint-disable-next-line camelcase
-{ must_not: FilterTerm } | undefined {
+FilterTerm | undefined {
   return allowDynamicPricing === 'true'
     ? undefined
-    : { must_not: getFilterTerm('price.type', 'pool') }
+    : getFilterTerm('price.type', 'pool')
 }
 
 export function generateBaseQuery(
@@ -92,7 +92,15 @@ export function generateBaseQuery(
             ? []
             : [getFilterTerm('isInPurgatory', 'false')])
         ],
-        ...getDynamicPricingMustNot(),
+        must_not: [
+          getDynamicPricingMustNot(),
+          getFilterTerm('service.attributes.main.type', 'thing'),
+          getFilterTerm(
+            'service.attributes.additionalInformation.tags',
+            'mvg-stripe-invoice',
+            'match'
+          )
+        ],
         ...getWhitelistShould()
       }
     }
@@ -232,7 +240,7 @@ export async function getAssetsFromDidList(
         sortBy: SortTermOptions.Created,
         sortDirection: SortDirectionOptions.Descending
       },
-      filters: [getFilterTerm('id', didList)],
+      filters: [getFilterTerm('_id', didList)],
       ignorePurgatory: true
     } as BaseQueryParams
     const query = generateBaseQuery(baseParams)
@@ -258,7 +266,7 @@ export async function retrieveDDOListByDIDs(
         sortBy: SortTermOptions.Created,
         sortDirection: SortDirectionOptions.Descending
       },
-      filters: [getFilterTerm('id', didList)],
+      filters: [getFilterTerm('_id', didList)],
       ignorePurgatory: true
     } as BaseQueryParams
     const query = generateBaseQuery(baseQueryparams)
@@ -418,7 +426,7 @@ export async function getDownloadAssets(
         sortDirection: SortDirectionOptions.Descending
       },
       filters: [
-        getFilterTerm('id', didList),
+        getFilterTerm('_id', didList),
         getFilterTerm('service.type', 'access')
       ]
     } as BaseQueryParams
