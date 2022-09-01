@@ -5,10 +5,13 @@
       "text": "The mobility sector is facing several challenges: from managing CO2 emissions and the transition to electric vehicles and alternatives modes of mobility to maintaining road security, reducing traffic jams, parking problems, and ensuring inclusivity.\n\nThe Future Mobility Data Marketplace matches supply and demand of any kind of data and algorithms that can be relevant for mobility. It allows data scientists, data consumers and data providers, like cities, mobility service providers and automotive companies to share, collaborate and commercialize their data services. In a secure and privacy friendly manner and ensuring that data owners stay in full control over their data\n\nThe Future Mobility Data Marketplace is based on the Gaia-X concepts. Gaia-X is part of the “Digital Europe” program aiming at making Europe's digital infrastructure future proof and self-sovereign."
     },
     "points": [
-      { "text": "USP title here 15 px Poppins medium" },
-      { "text": "USP title here 15 px Poppins medium" },
-      { "text": "USP title here 15 px Poppins medium" },
-      { "text": "USP title here 15 px Poppins medium" }
+      { "text": "Digital Sovereignty - Data owner stays in control" },
+      { "text": "Preventing copies of data - Data stays at the source" },
+      { "text": "Bridging supply and demand of data and AI algorithms" },
+      { "text": "Sharing options for both open and restricted data" },
+      {
+        "text": "Labels - “Digital quality stamps” for datasets and algorithms"
+      }
     ],
     "firstTimeVisiting": {
       "title": "First time visiting",
