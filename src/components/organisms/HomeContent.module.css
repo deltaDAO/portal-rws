@@ -23,11 +23,17 @@
   display: flex;
   gap: calc(var(--spacer) / 2);
   justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .checkmark {
   margin: 0;
-  fill: var(--brand-green);
+  height: var(--spacer);
+  width: var(--spacer);
+}
+
+.checkmark path {
+  stroke: var(--brand-green);
 }
 
 .pointText {
