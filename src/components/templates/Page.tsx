@@ -68,6 +68,7 @@ export default function Page({
           description={description}
           center={headerCenter}
           powered={isHome}
+          isHome={isHome}
         />
       )}
       {isSearch && (

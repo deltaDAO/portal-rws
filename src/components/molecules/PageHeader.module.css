@@ -1,6 +1,11 @@
 .header {
   margin-bottom: var(--spacer);
+  padding-top: var(--spacer);
   max-width: 50rem;
+}
+
+.isHome {
+  padding-top: 0;
 }
 
 .title {
@@ -12,6 +17,9 @@
 @media (min-width: 40rem) {
   .title {
     font-size: var(--font-size-h2);
+  }
+  .header {
+    padding-top: calc(var(--spacer) * 1.5);
   }
 }
 

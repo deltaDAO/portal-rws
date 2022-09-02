@@ -18,7 +18,7 @@
 }
 
 .main {
-  padding: var(--spacer) 0 calc(var(--spacer) * 2) 0;
+  padding: 0 0 calc(var(--spacer) * 2) 0;
 
   /* sticky footer technique */
   flex: 1;
@@ -37,10 +37,4 @@
 
 .main > div[class*='Alert'] {
   margin-bottom: calc(var(--spacer) / 1.5);
-}
-
-@media screen and (min-width: 40rem) {
-  .main {
-    padding-top: calc(var(--spacer) * 1.5);
-  }
 }
