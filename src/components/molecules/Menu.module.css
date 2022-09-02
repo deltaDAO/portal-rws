@@ -59,6 +59,7 @@
   }
   .actions {
     order: 3;
+    margin-left: 0;
   }
   .logo {
     margin-right: auto;
