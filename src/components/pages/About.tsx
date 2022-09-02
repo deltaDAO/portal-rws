@@ -91,14 +91,6 @@ export default function AboutPage(): ReactElement {
           <Markdown className={styles.body} text={header.body} />
           <h2 className={styles.title}>{footer.title}</h2>
           <Markdown className={styles.body} text={footer.body} />
-          <div className={styles.contacts}>
-            {footer.contacts.map((e, i) => (
-              <div className={styles.contact} key={i}>
-                <img src={e.image.childImageSharp.original.src} />
-                <Markdown className={styles.contactText} text={e.text} />
-              </div>
-            ))}
-          </div>
         </div>
         <div className={styles.media}>
           <img
@@ -106,6 +98,14 @@ export default function AboutPage(): ReactElement {
             className={styles.image}
           />
         </div>
+      </div>
+      <div className={styles.contacts}>
+        {footer.contacts.map((e, i) => (
+          <div className={styles.contact} key={i}>
+            <img src={e.image.childImageSharp.original.src} />
+            <Markdown className={styles.contactText} text={e.text} />
+          </div>
+        ))}
       </div>
       <div className={styles.partnersContainer}>
         <span>Founding Partners:</span>

@@ -32,6 +32,7 @@
   flex-direction: row;
   align-items: center;
   gap: var(--spacer);
+  max-width: 30rem;
 }
 
 .contactText {
@@ -82,5 +83,8 @@
     width: 100%;
     height: var(--image-height);
     object-fit: cover;
+  }
+  .contacts {
+    flex-direction: row;
   }
 }
