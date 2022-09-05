@@ -113,12 +113,12 @@ export default function PageHeader(): ReactElement {
       transform: startPosition
     },
     from: {
-      opacity: 1,
+      opacity: 0,
       transform: fromTranslateRight
     },
     enter: { opacity: 1, transform: startPosition },
     leave: {
-      opacity: 1,
+      opacity: 0,
       transform: leaveTranslateRight
     },
     config: { mass: 1, tension: 170, friction: 26 }
