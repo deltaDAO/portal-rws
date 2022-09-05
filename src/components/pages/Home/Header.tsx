@@ -30,6 +30,7 @@ const homePageHeaderQuery = graphql`
     }
     carousel: allFile(
       filter: { absolutePath: { regex: "/src/images/headerCarousel/" } }
+      sort: { fields: [base] }
     ) {
       edges {
         node {
@@ -93,8 +94,8 @@ export default function PageHeader(): ReactElement {
     translateMovements
 
   const scrollImage = useCallback(() => {
-    setIndex((state) => (state + 1) % 3)
-  }, [])
+    setIndex((state) => (state + 1) % carousel.edges.length)
+  }, [carousel.edges])
 
   useEffect(() => {
     const timer = setTimeout(scrollImage, CAROUSEL_SCROLL_TIMEOUT)

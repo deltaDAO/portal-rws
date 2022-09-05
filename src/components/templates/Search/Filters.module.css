@@ -1,14 +1,18 @@
-.filterList,
-div.filterList {
-  white-space: normal;
-  margin-bottom: 0;
+.filterList {
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
+  gap: calc(var(--spacer) / 2) var(--spacer);
+  flex-wrap: wrap;
+}
+
+.filterAccess,
+.filterType {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(max-content, 1fr));
+  gap: calc(var(--spacer) / 4);
 }
 
 .separator {
-  width: calc(var(--spacer) / 2);
+  display: none;
 }
 
 .filter {
@@ -22,11 +26,10 @@ button.filter,
 .filter:focus {
   border: var(--border-filter);
   border-radius: var(--border-radius-filter);
-  margin-right: calc(var(--spacer) / 6);
-  margin-bottom: calc(var(--spacer) / 6);
   color: var(--font-color-text-filter);
+  min-width: 8rem;
 
-  /* the only thing not possible to overwrite button style="text" with more specifity of selectors, so sledgehammer */
+  /* the only thing not possible to overwrite button style="text" with more specificity of selectors, so sledgehammer */
   padding: calc(var(--spacer) / 4) !important;
 }
 

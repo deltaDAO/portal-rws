@@ -9,7 +9,16 @@
     "menu": [
       {
         "name": "About",
-        "link": "/about"
+        "subItems": [
+          {
+            "name": "This demo",
+            "link": "/about"
+          },
+          {
+            "name": "Gaia-X",
+            "link": "/gaia-x"
+          }
+        ]
       },
       {
         "name": "Catalogue",
