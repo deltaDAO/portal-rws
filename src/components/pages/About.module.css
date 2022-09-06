@@ -1,3 +1,7 @@
+.mainContainer {
+  margin-top: var(--spacer);
+}
+
 .container {
   --image-height: 30rem;
   position: relative;
@@ -6,19 +10,45 @@
   padding-top: var(--image-height);
 }
 
+.partnersSpacer {
+  position: relative;
+}
+
+.partnersWrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background-fill-light);
+  width: 100vw;
+}
+
 .partnersContainer {
   display: flex;
   flex-direction: column;
-  margin: calc(var(--spacer) * 2) 0;
+  padding: 0 calc(var(--spacer) / 1.5);
+  padding-top: var(--spacer);
 }
 
 .partners {
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.partnersTitle {
+  font-weight: var(--font-weight-base);
 }
 
 .content {
   order: 2;
   padding: var(--spacer) 0;
+}
+
+.contactsContainer {
+  margin-top: 25rem;
+}
+
+.contactsContainer .body {
+  margin-bottom: var(--spacer);
 }
 
 .contacts {
@@ -32,7 +62,23 @@
   flex-direction: row;
   align-items: center;
   gap: var(--spacer);
-  max-width: 30rem;
+  padding: var(--spacer);
+  border-radius: var(--border-radius-menu);
+  width: 100%;
+  background-color: var(--background-fill-light);
+}
+
+.contactDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactDetails * {
+  margin: 0;
+}
+
+.contactDetails a {
+  font-weight: var(--font-weight-bold);
 }
 
 .contactText {
@@ -41,9 +87,10 @@
 
 .contacts img {
   margin: 0;
-  width: 10rem;
-  aspect-ratio: 3/4;
+  width: 8rem;
+  aspect-ratio: 1/1;
   object-fit: cover;
+  border-radius: 50%;
 }
 
 .media {
@@ -60,6 +107,19 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+@media (min-width: 40rem) {
+  .partnersContainer {
+    padding-left: calc(var(--spacer) / 0.6);
+    padding-right: calc(var(--spacer) / 0.6);
+  }
+}
+
+@media (min-width: 47rem) {
+  .contactsContainer {
+    margin-top: 20rem;
+  }
 }
 
 @media screen and (min-width: 55rem) {
@@ -86,5 +146,12 @@
   }
   .contacts {
     flex-direction: row;
+    justify-content: space-between;
+  }
+  .contactsContainer .body {
+    width: 60%;
+  }
+  .contact {
+    width: 50%;
   }
 }
