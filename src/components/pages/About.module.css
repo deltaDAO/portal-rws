@@ -1,8 +1,10 @@
-.mainContainer {
-  margin-top: var(--spacer);
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.container {
+.main {
   --image-height: 30rem;
   position: relative;
   display: flex;
@@ -10,17 +12,9 @@
   padding-top: var(--image-height);
 }
 
-.partnersSpacer {
-  position: relative;
-}
-
 .partnersWrapper {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
   background-color: var(--background-fill-light);
-  width: 100vw;
+  width: 100%;
 }
 
 .partnersContainer {
@@ -40,11 +34,12 @@
 
 .content {
   order: 2;
-  padding: var(--spacer) 0;
+  padding: 0;
+  padding-top: var(--spacer);
 }
 
-.contactsContainer {
-  margin-top: 25rem;
+.partnersWrapper {
+  margin: var(--spacer) 0;
 }
 
 .contactsContainer .body {
@@ -109,21 +104,14 @@
   object-fit: cover;
 }
 
-@media screen and (min-width: 40rem) {
-  .partnersContainer {
-    padding-left: calc(var(--spacer) / 0.6);
-    padding-right: calc(var(--spacer) / 0.6);
-  }
-}
-
-@media screen and (min-width: 47rem) {
-  .contactsContainer {
-    margin-top: 20rem;
-  }
-}
-
 @media screen and (min-width: 55rem) {
-  .container {
+  .wrapper {
+    margin-top: var(--spacer);
+  }
+  .mainContainer {
+    margin-top: var(--spacer);
+  }
+  .main {
     flex-direction: row;
     gap: var(--spacer);
     padding-top: 0;
@@ -141,8 +129,11 @@
   .media img {
     margin: 0;
     width: 100%;
-    height: var(--image-height);
+    height: 40rem;
     object-fit: cover;
+  }
+  .partnersWrapper {
+    margin: calc(var(--spacer) * 2) 0;
   }
   .contacts {
     flex-direction: row;

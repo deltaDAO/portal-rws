@@ -94,28 +94,28 @@ export default function AboutPage(): ReactElement {
   const { header, footer, image } = content.edges[0].node.childPagesJson
 
   return (
-    <Container className={styles.mainContainer}>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <h2 className={styles.title}>{header.title}</h2>
-          <Markdown className={styles.body} text={header.body} />
+    <div className={styles.wrapper}>
+      <Container className={styles.mainContainer}>
+        <div className={styles.main}>
+          <div className={styles.content}>
+            <h2 className={styles.title}>{header.title}</h2>
+            <Markdown className={styles.body} text={header.body} />
+          </div>
+          <div className={styles.media}>
+            <img
+              src={image.childImageSharp.original.src}
+              className={styles.image}
+            />
+          </div>
         </div>
-        <div className={styles.media}>
-          <img
-            src={image.childImageSharp.original.src}
-            className={styles.image}
-          />
-        </div>
+      </Container>
+      <div className={styles.partnersWrapper}>
+        <Container className={styles.partnersContainer}>
+          <h2 className={styles.partnersTitle}>Founding Partners:</h2>
+          <Partners className={styles.partners} />
+        </Container>
       </div>
-      <div className={styles.partnersSpacer}>
-        <div className={styles.partnersWrapper}>
-          <Container className={styles.partnersContainer}>
-            <h2 className={styles.partnersTitle}>Founding Partners:</h2>
-            <Partners className={styles.partners} />
-          </Container>
-        </div>
-      </div>
-      <div className={styles.contactsContainer}>
+      <Container className={styles.contactsContainer}>
         <h2 className={styles.title}>{footer.title}</h2>
         <Markdown className={styles.body} text={footer.body} />
         <div className={styles.contacts}>
@@ -130,7 +130,7 @@ export default function AboutPage(): ReactElement {
             </div>
           ))}
         </div>
-      </div>
-    </Container>
+      </Container>
+    </div>
   )
 }
