@@ -63,21 +63,25 @@ export default function Page({
         </Container>
       )}
       {title && !noPageHeader && (
-        <PageHeader
-          title={title}
-          description={description}
-          center={headerCenter}
-          powered={isHome}
-          isHome={isHome}
-        />
+        <Container>
+          <PageHeader
+            title={title}
+            description={description}
+            center={headerCenter}
+            powered={isHome}
+            isHome={isHome}
+          />
+        </Container>
       )}
       {isSearch && (
-        <SearchBar
-          visibleInput
-          name="searchInput"
-          placeholder={placeholder}
-          isSearchPage={isSearch}
-        />
+        <Container>
+          <SearchBar
+            visibleInput
+            name="searchInput"
+            placeholder={placeholder}
+            isSearchPage={isSearch}
+          />
+        </Container>
       )}
       {children}
     </>
@@ -86,7 +90,7 @@ export default function Page({
   return (
     <>
       <Seo title={title} description={description} uri={uri} />
-      {isHome ? <>{childElements}</> : <Container>{childElements}</Container>}
+      {childElements}
     </>
   )
 }
