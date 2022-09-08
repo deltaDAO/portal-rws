@@ -109,14 +109,14 @@
   object-fit: cover;
 }
 
-@media (min-width: 40rem) {
+@media screen and (min-width: 40rem) {
   .partnersContainer {
     padding-left: calc(var(--spacer) / 0.6);
     padding-right: calc(var(--spacer) / 0.6);
   }
 }
 
-@media (min-width: 47rem) {
+@media screen and (min-width: 47rem) {
   .contactsContainer {
     margin-top: 20rem;
   }

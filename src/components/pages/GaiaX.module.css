@@ -1,32 +1,12 @@
-.container {
-  --image-height: 30rem;
-  position: relative;
+.wrapper {
   display: flex;
   flex-direction: column;
-  padding-top: var(--image-height);
-}
-
-.partnersContainer {
-  display: flex;
-  flex-direction: column;
-  margin: calc(var(--spacer) * 2) 0;
-}
-
-.section span {
-  font-weight: var(--font-weight-bold);
-}
-
-.content {
-  padding: var(--spacer) 0;
+  align-items: center;
 }
 
 .media {
-  position: absolute;
-  top: 0;
-  right: 50%;
-  transform: translateX(50%);
-  width: 100vw;
-  height: var(--image-height);
+  height: 30rem;
+  width: 100%;
 }
 
 .media img {
@@ -35,31 +15,32 @@
   object-fit: cover;
 }
 
-.actions div {
+.header {
+  margin-top: var(--spacer);
+}
+
+.section {
   margin: var(--spacer) 0;
 }
 
+.heroWrapper {
+  width: 100%;
+  margin: var(--spacer) 0;
+  padding: var(--spacer) 0;
+  background-color: var(--color-primary);
+  color: var(--font-color-text-inverted);
+}
+
+.heroHeader {
+  margin-bottom: var(--spacer);
+}
+
+.heroContainer ul {
+  margin-bottom: calc(var(--spacer) / 8);
+}
+
 @media screen and (min-width: 55rem) {
-  .container {
-    flex-direction: row;
-    gap: var(--spacer);
-    padding-top: 0;
-  }
-  .content {
-    width: 60%;
-  }
-  .mediaColumn {
-    width: 40%;
-  }
   .media {
-    position: unset;
-    transform: none;
-    width: 100%;
-  }
-  .media img {
-    margin: 0;
-    width: 100%;
-    height: var(--image-height);
-    object-fit: cover;
+    display: none;
   }
 }
