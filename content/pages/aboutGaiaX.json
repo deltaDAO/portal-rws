@@ -3,6 +3,10 @@
   "topSection": [
     {
       "text": "Gaia-X is part of the “Digital Europe” program aiming at making Europe’s digital infrastructure future proof and self-sovereign. Gaia-X focusses on the implementation of a decentralized, federated cloud- and data sharing infrastructure. Both public and private, cross-border. Non-European parties can participate but the rules are set based on the EU values: Openness, Fairness, Privacy, Security and Transparency.",
+      "interactivity": {
+        "image": "../../src/images/video-placeholder-1.png",
+        "link": "https://youtu.be/DrG-EBBFniw"
+      },
       "cta": {
         "label": "Read more",
         "link": "https://www.gxfs.eu/connection-to-gaia-x/"
@@ -10,6 +14,10 @@
     },
     {
       "text": "The Gaia-X Federation Services (GXFS) are being developed together with the marker in order to realize interoperability between (eco)systems and represent the minimum technical requirements necessary to set up and operate a cloud-based self-sovereign data infrastructure ecosystem. On the basis of technical specifications, services based on open-source code are being developed. They will then be developed into operational services and continuously improved by the Gaia-X Community.  These services are available for everyone who whishes to use them for their own implementations.",
+      "interactivity": {
+        "image": "../../src/images/video-placeholder-2.png",
+        "link": "https://youtu.be/68tZh_wkeYY"
+      },
       "cta": {
         "label": "Read more",
         "link": "https://www.gxfs.eu/gxfs-overview/"

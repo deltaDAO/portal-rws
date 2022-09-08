@@ -3,8 +3,17 @@ import React, { ReactElement } from 'react'
 import Button from '../atoms/Button'
 import Container from '../atoms/Container'
 import Markdown from '../atoms/Markdown'
-import HighlightBox from '../molecules/HighlightBox'
 import styles from './GaiaX.module.css'
+import { ReactComponent as GaiaXLogo } from '../../images/gaia-x-logo.svg'
+import { ReactComponent as GearIcon } from '../../images/gear_icon.svg'
+import { ReactComponent as ShoppingCartIcon } from '../../images/shopping_cart.svg'
+import { ReactComponent as FMDMLogo } from '../../images/fmdm-logo.svg'
+
+const icons = {
+  gear: <GearIcon />,
+  cart: <ShoppingCartIcon />,
+  logo: <FMDMLogo />
+}
 
 const gaiaXPageQuery = graphql`
   query gaiaXPageQuery {
@@ -17,6 +26,16 @@ const gaiaXPageQuery = graphql`
             title
             topSection {
               text
+              interactivity {
+                image {
+                  childImageSharp {
+                    original {
+                      src
+                    }
+                  }
+                }
+                link
+              }
               cta {
                 label
                 link
@@ -56,6 +75,16 @@ interface GaiaXContent {
           title: string
           topSection: {
             text: string
+            interactivity: {
+              image: {
+                childImageSharp: {
+                  original: {
+                    src: string
+                  }
+                }
+              }
+              link: string
+            }
             cta: {
               label: string
               link: string
@@ -71,7 +100,7 @@ interface GaiaXContent {
             cards: {
               title: string
               body: string
-              icon: string
+              icon: keyof typeof icons
             }[]
           }
           image: {
@@ -105,15 +134,37 @@ export default function GaiaXPage(): ReactElement {
         <h2 className={styles.title}>{title}</h2>
         {topSection.map((section, i) => (
           <div key={i} className={styles.section}>
-            <Markdown text={section.text} />
-            <Button
-              style="primary"
-              href={section.cta.link}
+            <a
+              className={styles.desktopInteractivity}
+              href={section.interactivity.link}
               target="_blank"
               rel="noopener noreferrer"
             >
-              {section.cta.label}
-            </Button>
+              <img
+                src={section.interactivity.image.childImageSharp.original.src}
+              />
+            </a>
+            <div className={styles.sectionText}>
+              <Markdown text={section.text} />
+              <a
+                className={styles.mobileInteractivity}
+                href={section.interactivity.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img
+                  src={section.interactivity.image.childImageSharp.original.src}
+                />
+              </a>
+              <Button
+                style="primary"
+                href={section.cta.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {section.cta.label}
+              </Button>
+            </div>
           </div>
         ))}
       </Container>
@@ -131,8 +182,25 @@ export default function GaiaXPage(): ReactElement {
       </div>
       <Container className={styles.footerContainer}>
         <Markdown text={footer.text} />
-
-        <Markdown text={footer.disclaimer} />
+        <div className={styles.gaiaXContainer}>
+          <a
+            href="https://www.gxfs.eu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <GaiaXLogo />
+          </a>
+        </div>
+        <div className={styles.cardsContainer}>
+          {footer.cards.map((card) => (
+            <div key={card.icon} className={styles.card}>
+              {icons[card.icon]}
+              <h4>{card.title}</h4>
+              <Markdown text={card.body} />
+            </div>
+          ))}
+        </div>
+        <Markdown className={styles.disclaimer} text={footer.disclaimer} />
       </Container>
     </div>
   )
