@@ -10,6 +10,7 @@ import { getAssetsBestPrices, AssetListPrices } from '../../utils/subgraph'
 import { useSiteMetadata } from '../../hooks/useSiteMetadata'
 import { useCancelToken } from '../../hooks/useCancelToken'
 import { CancelToken } from 'axios'
+import Container from '../atoms/Container'
 
 const columns = [
   {
@@ -107,12 +108,14 @@ export default function Bookmarks(): ReactElement {
   ])
 
   return (
-    <Table
-      columns={columns}
-      data={pinned}
-      isLoading={isLoading}
-      emptyMessage="You can bookmark your favorite data services to pin them here."
-      noTableHead
-    />
+    <Container>
+      <Table
+        columns={columns}
+        data={pinned}
+        isLoading={isLoading}
+        emptyMessage="You can bookmark your favorite data services to pin them here."
+        noTableHead
+      />
+    </Container>
   )
 }

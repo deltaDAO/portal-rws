@@ -56,7 +56,7 @@ export default function MenuDropdown({
         </ul>
       }
       placement="bottom"
-      trigger="focus | click"
+      trigger="focus click mouseenter"
     >
       <ItemLabel name={label} />
     </Tooltip>

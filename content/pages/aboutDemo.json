@@ -8,12 +8,22 @@
     "body": "For more information on this environment or how to get involved and participate in potential next steps please contact:",
     "contacts": [
       {
+        "name": "Arthur Maring",
         "image": "../../src/images/contacts/arthur.png",
-        "text": "[Arthur Maring](mailto:arthur.maring@rws.nl)\n\nInnovation Manager Smart Mobility, Rijkswaterstaat"
+        "text": "Innovation Manager Smart Mobility, Rijkswaterstaat",
+        "cta": {
+          "label": "Get in touch with Arthur",
+          "link": "mailto:arthur.maring@rws.nl"
+        }
       },
       {
+        "name": "Harmen van der Kooij",
         "image": "../../src/images/contacts/harmen.jpeg",
-        "text": "[Harmen van der Kooij](mailto:harmen.vanderkooij@dutchblockchaincoalition.org)\n\nLead Mobility Track at Dutch Blockchain Coalition"
+        "text": "Lead Mobility Track at Dutch Blockchain Coalition",
+        "cta": {
+          "label": "Get in touch with Harmen",
+          "link": "mailto:harmen.vanderkooij@dutchblockchaincoalition.org"
+        }
       }
     ]
   },

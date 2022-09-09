@@ -19,6 +19,7 @@ const aboutPageQuery = graphql`
               title
               body
               contacts {
+                name
                 image {
                   childImageSharp {
                     original {
@@ -27,6 +28,10 @@ const aboutPageQuery = graphql`
                   }
                 }
                 text
+                cta {
+                  label
+                  link
+                }
               }
             }
             image {
@@ -55,6 +60,7 @@ interface AboutContent {
             title: string
             body: string
             contacts: {
+              name: string
               image: {
                 childImageSharp: {
                   original: {
@@ -63,6 +69,10 @@ interface AboutContent {
                 }
               }
               text: string
+              cta: {
+                label: string
+                link: string
+              }
             }[]
           }
           image: {
@@ -84,33 +94,43 @@ export default function AboutPage(): ReactElement {
   const { header, footer, image } = content.edges[0].node.childPagesJson
 
   return (
-    <Container>
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <h2 className={styles.title}>{header.title}</h2>
-          <Markdown className={styles.body} text={header.body} />
-          <h2 className={styles.title}>{footer.title}</h2>
-          <Markdown className={styles.body} text={footer.body} />
-          <div className={styles.contacts}>
-            {footer.contacts.map((e, i) => (
-              <div className={styles.contact} key={i}>
-                <img src={e.image.childImageSharp.original.src} />
-                <Markdown className={styles.contactText} text={e.text} />
-              </div>
-            ))}
+    <div className={styles.wrapper}>
+      <Container className={styles.mainContainer}>
+        <div className={styles.main}>
+          <div className={styles.content}>
+            <h2 className={styles.title}>{header.title}</h2>
+            <Markdown className={styles.body} text={header.body} />
+          </div>
+          <div className={styles.media}>
+            <img
+              src={image.childImageSharp.original.src}
+              className={styles.image}
+            />
           </div>
         </div>
-        <div className={styles.media}>
-          <img
-            src={image.childImageSharp.original.src}
-            className={styles.image}
-          />
+      </Container>
+      <div className={styles.partnersWrapper}>
+        <Container className={styles.partnersContainer}>
+          <h2 className={styles.partnersTitle}>Founding Partners:</h2>
+          <Partners className={styles.partners} />
+        </Container>
+      </div>
+      <Container className={styles.contactsContainer}>
+        <h2 className={styles.title}>{footer.title}</h2>
+        <Markdown className={styles.body} text={footer.body} />
+        <div className={styles.contacts}>
+          {footer.contacts.map((e, i) => (
+            <div className={styles.contact} key={i}>
+              <img src={e.image.childImageSharp.original.src} />
+              <div className={styles.contactDetails}>
+                <h4>{e.name}</h4>
+                <Markdown className={styles.contactText} text={e.text} />
+                <a href={e.cta.link}>{e.cta.label}</a>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-      <div className={styles.partnersContainer}>
-        <span>Founding Partners:</span>
-        <Partners className={styles.partners} />
-      </div>
-    </Container>
+      </Container>
+    </div>
   )
 }

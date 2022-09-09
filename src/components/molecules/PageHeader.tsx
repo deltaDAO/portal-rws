@@ -10,16 +10,19 @@ export default function PageHeader({
   title,
   description,
   center,
-  powered
+  powered,
+  isHome
 }: {
   title: string
   description?: string
   center?: boolean
   powered?: boolean
+  isHome?: boolean
 }): ReactElement {
   const styleClasses = cx({
     header: true,
-    center: center
+    center: center,
+    isHome: isHome
   })
 
   return (

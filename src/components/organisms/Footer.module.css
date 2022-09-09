@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   padding-top: var(--spacer);
+  padding-left: calc(var(--spacer) / 2);
 }
 
 .content {
@@ -86,8 +87,9 @@
     justify-content: space-between;
   }
   .logo {
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
+    margin-top: var(--spacer);
     margin-right: auto;
     padding: 0;
   }

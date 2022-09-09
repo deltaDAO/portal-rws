@@ -11,6 +11,7 @@ import { useUserPreferences } from '../../../providers/UserPreferences'
 import { useCancelToken } from '../../../hooks/useCancelToken'
 import styles from './index.module.css'
 import { PagedAssets } from '../../../models/PagedAssets'
+import Container from '../../atoms/Container'
 
 export default function SearchPage({
   location,
@@ -79,7 +80,7 @@ export default function SearchPage({
 
   return (
     <Permission eventType="browse">
-      <>
+      <Container>
         <div className={styles.search}>
           <div className={styles.row}>
             <Filters
@@ -107,7 +108,7 @@ export default function SearchPage({
             onPageChange={updatePage}
           />
         </div>
-      </>
+      </Container>
     </Permission>
   )
 }

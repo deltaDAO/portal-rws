@@ -52,32 +52,25 @@ export default function Page({
 
   const childElements = (
     <>
-      {isSearchBarVisible && !isSearch && (
-        <Container>
+      <Container>
+        {isSearchBarVisible && (
           <SearchBar
             visibleInput
             name="searchInput"
             placeholder={placeholder}
             isSearchPage={isSearch}
           />
-        </Container>
-      )}
-      {title && !noPageHeader && (
-        <PageHeader
-          title={title}
-          description={description}
-          center={headerCenter}
-          powered={isHome}
-        />
-      )}
-      {isSearch && (
-        <SearchBar
-          visibleInput
-          name="searchInput"
-          placeholder={placeholder}
-          isSearchPage={isSearch}
-        />
-      )}
+        )}
+        {title && !noPageHeader && (
+          <PageHeader
+            title={title}
+            description={description}
+            center={headerCenter}
+            powered={isHome}
+            isHome={isHome}
+          />
+        )}
+      </Container>
       {children}
     </>
   )
@@ -85,7 +78,7 @@ export default function Page({
   return (
     <>
       <Seo title={title} description={description} uri={uri} />
-      {isHome ? <>{childElements}</> : <Container>{childElements}</Container>}
+      {childElements}
     </>
   )
 }
