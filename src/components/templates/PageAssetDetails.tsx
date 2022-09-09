@@ -5,6 +5,7 @@ import Page from './Page'
 import Alert from '../atoms/Alert'
 import Loader from '../atoms/Loader'
 import { useAsset } from '../../providers/Asset'
+import Container from '../atoms/Container'
 
 export default function PageTemplateAssetDetails({
   uri
@@ -26,21 +27,27 @@ export default function PageTemplateAssetDetails({
 
   return ddo && pageTitle !== undefined && !loading && isAssetNetworkAllowed ? (
     <Page title={pageTitle} uri={uri}>
-      <Router basepath="/asset">
-        <AssetContent path=":did" />
-      </Router>
+      <Container>
+        <Router basepath="/asset">
+          <AssetContent path=":did" />
+        </Router>
+      </Container>
     </Page>
   ) : error || !isAssetNetworkAllowed ? (
     <Page title={pageTitle} noPageHeader uri={uri}>
-      <Alert
-        title={pageTitle}
-        text={error || 'This asset was published in an unsupported network'}
-        state="error"
-      />
+      <Container>
+        <Alert
+          title={pageTitle}
+          text={error || 'This asset was published in an unsupported network'}
+          state="error"
+        />
+      </Container>
     </Page>
   ) : (
     <Page title={undefined} uri={uri}>
-      <Loader />
+      <Container>
+        <Loader />
+      </Container>
     </Page>
   )
 }

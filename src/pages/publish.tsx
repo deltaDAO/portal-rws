@@ -3,6 +3,7 @@ import PagePublish from '../components/pages/Publish'
 import Page from '../components/templates/Page'
 import { graphql, PageProps } from 'gatsby'
 import OceanProvider from '../providers/Ocean'
+import Container from '../components/atoms/Container'
 
 export default function PageGatsbyPublish(props: PageProps): ReactElement {
   const content = (props.data as any).content.edges[0].node.childPublishJson
@@ -10,7 +11,9 @@ export default function PageGatsbyPublish(props: PageProps): ReactElement {
   return (
     <OceanProvider>
       <Page title={title} description={description} uri={props.uri}>
-        <PagePublish content={content} />
+        <Container>
+          <PagePublish content={content} />
+        </Container>
       </Page>
     </OceanProvider>
   )
