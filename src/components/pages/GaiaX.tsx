@@ -7,12 +7,12 @@ import styles from './GaiaX.module.css'
 import { ReactComponent as GaiaXLogo } from '../../images/gaia-x-logo.svg'
 import { ReactComponent as GearIcon } from '../../images/gear_icon.svg'
 import { ReactComponent as ShoppingCartIcon } from '../../images/shopping_cart.svg'
-import { ReactComponent as FMDMLogo } from '../../images/fmdm-logo.svg'
+import { ReactComponent as FMALogo } from '../../images/fma-logo.svg'
 
 const icons = {
   gear: <GearIcon />,
   cart: <ShoppingCartIcon />,
-  logo: <FMDMLogo />
+  logo: <FMALogo />
 }
 
 const gaiaXPageQuery = graphql`
