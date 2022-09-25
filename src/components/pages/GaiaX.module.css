@@ -87,8 +87,17 @@
   background-color: var(--background-fill-light);
 }
 
+.card:nth-of-type(2) {
+  order: -1;
+}
+
 .card svg {
   height: 3rem;
+}
+
+.card:nth-of-type(2) svg {
+  height: 4rem;
+  width: 17rem;
 }
 
 .card h4 {
@@ -142,6 +151,7 @@
     box-shadow: 0 2px 24px 0 rgba(0, 0, 0, 0.06);
   }
   .card:nth-of-type(2) {
+    order: initial;
     transform: translateY(calc(var(--spacer) * -1));
   }
   .disclaimer {
