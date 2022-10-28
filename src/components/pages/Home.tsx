@@ -98,7 +98,7 @@ export default function HomePage(): ReactElement {
       <>
         <Header />
         <Container>
-          <Partners />
+          <Partners extended />
         </Container>
         <section className={styles.content}>
           <HomeContent />
