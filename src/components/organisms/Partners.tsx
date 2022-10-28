@@ -22,30 +22,51 @@ const homePageHeaderQuery = graphql`
         }
       }
     }
-  }
-`
-interface Partners {
-  partners: {
-    edges: {
-      node: {
-        childImageSharp: {
-          id: string
-          original: {
-            src: string
+    extra: allFile(
+      filter: { absolutePath: { regex: "/src/images/extra-logos/" } }
+      sort: { fields: [base] }
+    ) {
+      edges {
+        node {
+          childImageSharp {
+            id
+            original {
+              src
+            }
           }
         }
       }
-    }[]
+    }
   }
+`
+
+interface LogoStructure {
+  edges: {
+    node: {
+      childImageSharp: {
+        id: string
+        original: {
+          src: string
+        }
+      }
+    }
+  }[]
+}
+
+interface Partners {
+  partners: LogoStructure
+  extra: LogoStructure
 }
 
 export default function Partners({
+  extended,
   className
 }: {
+  extended?: boolean
   className?: string
 }): ReactElement {
   const data: Partners = useStaticQuery(homePageHeaderQuery)
-  const { partners } = data
+  const { partners, extra } = data
 
   return (
     <div
@@ -61,6 +82,14 @@ export default function Partners({
           src={e.node.childImageSharp.original.src}
         />
       ))}
+      {extended &&
+        extra.edges.map((e) => (
+          <img
+            key={e.node.childImageSharp.id}
+            className={styles.logo}
+            src={e.node.childImageSharp.original.src}
+          />
+        ))}
     </div>
   )
 }
