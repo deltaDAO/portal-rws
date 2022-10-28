@@ -9,7 +9,7 @@ import Container from '../../atoms/Container'
 import { animated, useSpringRef, useTransition } from 'react-spring'
 
 const cx = classNames.bind(styles)
-const CAROUSEL_SCROLL_TIMEOUT = 20000
+const CAROUSEL_SCROLL_TIMEOUT = 60000
 
 const homePageHeaderQuery = graphql`
   query homePageHeaderQuery {
