@@ -53,7 +53,7 @@ export default function Menu(): ReactElement {
 
           <div className={styles.actions}>
             <SearchButton />
-            <Networks />
+            {/* <Networks /> */}
             <Wallet />
             <UserPreferences />
           </div>
