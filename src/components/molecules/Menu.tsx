@@ -6,7 +6,6 @@ import styles from './Menu.module.css'
 import { useSiteMetadata } from '../../hooks/useSiteMetadata'
 import UserPreferences from './UserPreferences'
 import Logo from '../atoms/Logo'
-import Networks from './UserPreferences/Networks'
 import Container from '../atoms/Container'
 import MenuDropdown from '../atoms/MenuDropdown'
 import SearchButton from './SearchButton'
@@ -53,7 +52,6 @@ export default function Menu(): ReactElement {
 
           <div className={styles.actions}>
             <SearchButton />
-            <Networks />
             <Wallet />
             <UserPreferences />
           </div>
