@@ -103,7 +103,7 @@
 .card h4 {
   margin-top: var(--spacer);
   margin-bottom: calc(var(--spacer) / 2);
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 }
 
 .disclaimer {
