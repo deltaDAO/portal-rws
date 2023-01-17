@@ -29,7 +29,8 @@ export function getSearchQuery(
   sort?: string,
   sortDirection?: string,
   serviceType?: string,
-  accessType?: string
+  accessType?: string,
+  isCompliant?: boolean
 ): SearchQuery {
   text = escapeESReservedChars(text)
   const emptySearchTerm = text === undefined || text === ''
@@ -68,6 +69,12 @@ export function getSearchQuery(
 
   const nestedQuery = {
     must: [
+      {
+        query_string: {
+          default_field: 'service.attributes.additionalInformation.isCompliant',
+          query: !!isCompliant
+        }
+      },
       {
         bool: {
           should: [
@@ -143,6 +150,7 @@ export async function getResults(
     sortOrder?: string
     serviceType?: string
     accessType?: string
+    isCompliant?: boolean
   },
   chainIds: number[],
   cancelToken?: CancelToken
@@ -157,7 +165,8 @@ export async function getResults(
     sort,
     sortOrder,
     serviceType,
-    accessType
+    accessType,
+    isCompliant
   } = params
 
   const searchQuery = getSearchQuery(
@@ -171,7 +180,8 @@ export async function getResults(
     sort,
     sortOrder,
     serviceType,
-    accessType
+    accessType,
+    isCompliant
   )
   const queryResult = await queryMetadata(searchQuery, cancelToken)
   return queryResult

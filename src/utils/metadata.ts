@@ -261,7 +261,20 @@ export function getInitialPublishFormDatasetsValues(
   return localStorageValues || initialValues
 }
 
-export function transformPublishFormToMetadata(
+const verifySelfDescription = async (args: {
+  url?: string
+  raw?: any
+}): Promise<boolean> => {
+  let result
+  if (args.url) {
+    result = await verifyServiceSelfDescription({ body: args.url, raw: false })
+  } else if (args.raw) {
+    result = await verifyServiceSelfDescription({ body: args.raw, raw: true })
+  }
+  return result.verified
+}
+
+export async function transformPublishFormToMetadata(
   {
     name,
     author,
@@ -274,7 +287,7 @@ export function transformPublishFormToMetadata(
     serviceSelfDescription
   }: Partial<MetadataPublishFormDataset>,
   ddo?: DDO
-): MetadataMarket {
+): Promise<MetadataMarket> {
   const currentTime = toStringNoMS(new Date())
 
   const transformedLinks = getValidUrlArrayContent(links)
@@ -306,7 +319,10 @@ export function transformPublishFormToMetadata(
       consent: {
         noPersonalData
       },
-      serviceSelfDescription: transformedServiceSelfDescription
+      serviceSelfDescription: transformedServiceSelfDescription,
+      isCompliant: await verifySelfDescription(
+        transformedServiceSelfDescription
+      )
     }
   }
 
