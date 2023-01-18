@@ -20,7 +20,7 @@ export interface AdditionalInformationMarket extends AdditionalInformation {
   consent: {
     noPersonalData: boolean
   }
-  isCompliant: boolean
+  isInCompliance: boolean
 }
 
 export interface MetadataMarket extends Metadata {

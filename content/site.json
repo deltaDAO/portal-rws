@@ -22,7 +22,7 @@
       },
       {
         "name": "Catalogue",
-        "link": "/search?sort=_score&sortOrder=desc&isCompliant=true&text="
+        "link": "/search?sort=_score&sortOrder=desc&text="
       },
       {
         "name": "Publish",
@@ -40,7 +40,7 @@
         { "label": "About Gaia-X", "link": "/gaia-x" },
         {
           "label": "Catalogue",
-          "link": "/search?sort=_score&sortOrder=desc&isCompliant=true&text="
+          "link": "/search?sort=_score&sortOrder=desc&text="
         },
         { "label": "First time visiting", "link": "/onboarding" }
       ]
