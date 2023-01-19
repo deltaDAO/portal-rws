@@ -20,10 +20,9 @@ export default function MetaFull(): ReactElement {
         title="Owner"
         content={
           <Publisher
-            account={
-              isServiceSelfDescriptionVerified
-                ? author
-                : ddo?.publicKey[0].owner
+            account={ddo?.publicKey[0].owner}
+            verifiedServiceProviderName={
+              isServiceSelfDescriptionVerified ? author : undefined
             }
           />
         }

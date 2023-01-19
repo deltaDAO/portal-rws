@@ -46,7 +46,8 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
               <h1 className={styles.title}>{name}</h1>
             </Dotdotdot>
             <Publisher
-              account={isInCompliance ? author : owner}
+              account={owner}
+              verifiedServiceProviderName={isInCompliance ? author : undefined}
               minimal
               className={styles.publisher}
             />

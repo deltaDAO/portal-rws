@@ -16,8 +16,7 @@ export default function MetaMain(): ReactElement {
     type,
     isAssetNetwork,
     isServiceSelfDescriptionVerified,
-    isVerifyingSD,
-    verifiedServiceProviderName
+    isVerifyingSD
   } = useAsset()
   const { web3ProviderInfo } = useWeb3()
   const { author } = ddo?.findServiceByType('metadata').attributes.main
@@ -64,8 +63,10 @@ export default function MetaMain(): ReactElement {
         <div className={styles.byline}>
           Published By{' '}
           <Publisher
-            account={isServiceSelfDescriptionVerified ? author : owner}
-            verifiedServiceProviderName={verifiedServiceProviderName}
+            account={owner}
+            verifiedServiceProviderName={
+              isServiceSelfDescriptionVerified ? author : undefined
+            }
           />
           <p>
             <Time date={ddo?.created} relative />
