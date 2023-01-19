@@ -20,7 +20,7 @@ export default function MetaMain(): ReactElement {
     verifiedServiceProviderName
   } = useAsset()
   const { web3ProviderInfo } = useWeb3()
-
+  const { author } = ddo?.findServiceByType('metadata').attributes.main
   const isCompute = Boolean(ddo?.findServiceByType('compute'))
   const accessType = isCompute ? 'compute' : 'access'
   const blockscoutNetworks = [1287, 2021000, 2021001, 44787, 246, 1285]
@@ -64,7 +64,7 @@ export default function MetaMain(): ReactElement {
         <div className={styles.byline}>
           Published By{' '}
           <Publisher
-            account={owner}
+            account={isServiceSelfDescriptionVerified ? author : owner}
             verifiedServiceProviderName={verifiedServiceProviderName}
           />
           <p>

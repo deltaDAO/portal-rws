@@ -5,8 +5,9 @@ import Publisher from '../../atoms/Publisher'
 import { useAsset } from '../../../providers/Asset'
 
 export default function MetaFull(): ReactElement {
-  const { ddo, metadata, isInPurgatory, type } = useAsset()
-  const { algorithm } = ddo.findServiceByType('metadata').attributes.main
+  const { ddo, type, isServiceSelfDescriptionVerified } = useAsset()
+  const { algorithm, author } =
+    ddo.findServiceByType('metadata').attributes.main
 
   function DockerImage() {
     const { image, tag } = algorithm.container
@@ -17,7 +18,15 @@ export default function MetaFull(): ReactElement {
     <div className={styles.metaFull}>
       <MetaItem
         title="Owner"
-        content={<Publisher account={ddo?.publicKey[0].owner} />}
+        content={
+          <Publisher
+            account={
+              isServiceSelfDescriptionVerified
+                ? author
+                : ddo?.publicKey[0].owner
+            }
+          />
+        }
       />
 
       {type === 'algorithm' && algorithm && (
