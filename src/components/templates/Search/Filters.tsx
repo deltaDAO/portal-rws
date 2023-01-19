@@ -25,7 +25,7 @@ const accessFilterItems = [
 ]
 
 const complianceFilterItems = [
-  { display: 'in compliance', value: FilterByIsInComplianceOptions.True }
+  { display: 'Gaia-X compliant', value: FilterByIsInComplianceOptions.True }
 ]
 
 export default function FilterPrice({
