@@ -253,7 +253,7 @@ const UserTokenOrders = gql`
   }
 `
 const UserSalesQuery = gql`
-  query UserSalesQuery($userSalesId: String) {
+  query UserSalesQuery($userSalesId: String!) {
     users(where: { id: $userSalesId }) {
       id
       nrSales
