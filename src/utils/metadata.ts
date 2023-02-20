@@ -263,13 +263,13 @@ export function getInitialPublishFormDatasetsValues(
 
 const verifySelfDescription = async (args: {
   url?: string
-  raw?: any
+  rawSD?: any
 }): Promise<boolean> => {
   let result
   if (args.url) {
     result = await verifyServiceSelfDescription({ body: args.url, raw: false })
-  } else if (args.raw) {
-    result = await verifyServiceSelfDescription({ body: args.raw, raw: true })
+  } else if (args.rawSD) {
+    result = await verifyServiceSelfDescription({ body: args.rawSD, raw: true })
   }
   return result.verified
 }
