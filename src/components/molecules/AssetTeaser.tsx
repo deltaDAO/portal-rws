@@ -29,7 +29,7 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
   const { attributes } = ddo.findServiceByType(
     'metadata'
   ) as ServiceMetadataMarket
-  const { isInCompliance } = attributes.additionalInformation
+  const isCompliant = attributes.additionalInformation.compliance.gx
   const { name, type, author } = attributes.main
   const { dataTokenInfo } = ddo
   const isCompute = Boolean(ddo?.findServiceByType('compute'))
@@ -47,7 +47,7 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
             </Dotdotdot>
             <Publisher
               account={owner}
-              verifiedServiceProviderName={isInCompliance ? author : undefined}
+              verifiedServiceProviderName={isCompliant ? author : undefined}
               minimal
               className={styles.publisher}
             />

@@ -118,7 +118,7 @@ export function getSearchQuery(
   complianceType !== undefined &&
     filters.push(
       getFilterTerm(
-        'service.attributes.additionalInformation.isInCompliance',
+        'service.attributes.additionalInformation.compliance.gx',
         complianceType
       )
     )

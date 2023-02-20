@@ -320,9 +320,9 @@ export async function transformPublishFormToMetadata(
         noPersonalData
       },
       serviceSelfDescription: transformedServiceSelfDescription,
-      isInCompliance: await verifySelfDescription(
-        transformedServiceSelfDescription
-      )
+      compliance: {
+        gx: await verifySelfDescription(transformedServiceSelfDescription)
+      }
     }
   }
 
