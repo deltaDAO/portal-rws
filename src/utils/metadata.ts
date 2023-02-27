@@ -163,7 +163,7 @@ export async function verifyServiceSelfDescription({
 
   const baseUrl = raw
     ? `${complianceUri}/compliance`
-    : `${complianceUri}/service-offering/verify`
+    : `${complianceUri}/participant/verify`
   const requestBody = raw ? body : { url: body }
 
   try {
