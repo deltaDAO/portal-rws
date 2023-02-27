@@ -162,7 +162,7 @@ export async function verifyServiceSelfDescription({
   if (!body) return { verified: false }
 
   const baseUrl = raw
-    ? `${complianceUri}/service-offering/verify/raw`
+    ? `${complianceUri}/compliance`
     : `${complianceUri}/service-offering/verify`
   const requestBody = raw ? body : { url: body }
 
@@ -174,7 +174,7 @@ export async function verifyServiceSelfDescription({
         responseBody: response.data.body
       }
     }
-    if (response?.status === 200) {
+    if (response?.status < 400) {
       return { verified: true }
     }
 
