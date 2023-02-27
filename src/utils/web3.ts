@@ -31,6 +31,16 @@ export function accountTruncate(account: string): string {
   return truncated
 }
 
+export function nameTruncate(name: string, maxLength?: number): string {
+  const mLength = maxLength || 25
+  if (!name) {
+    return
+  } else if (name.length <= mLength) {
+    return name
+  }
+  return name.substring(0, mLength) + '…'
+}
+
 export function getNetworkType(network: EthereumListsChain): string {
   // HEADS UP! Hack for getting network's type main/test, without using
   // .network field, which is innexistent on https://chainid.network/chains.json

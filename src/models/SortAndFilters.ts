@@ -18,6 +18,10 @@ export enum FilterByAccessOptions {
   Compute = 'compute'
 }
 
+export enum FilterByIsInComplianceOptions {
+  True = 'true'
+}
+
 export interface SortOptions {
   sortBy: SortTermOptions
   sortDirection?: SortDirectionOptions

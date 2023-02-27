@@ -115,7 +115,7 @@ export default function PublishPage({
     ) => void
   ): Promise<void> {
     try {
-      const metadata = transformPublishFormToMetadata(values)
+      const metadata = await transformPublishFormToMetadata(values)
       const timeout = mapTimeoutStringToSeconds(values.timeout)
 
       const serviceType = values.access === 'Download' ? 'access' : 'compute'

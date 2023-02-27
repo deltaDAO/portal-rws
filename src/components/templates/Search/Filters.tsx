@@ -6,6 +6,7 @@ import Button from '../../atoms/Button'
 import styles from './Filters.module.css'
 import {
   FilterByAccessOptions,
+  FilterByIsInComplianceOptions,
   FilterByTypeOptions
 } from '../../../models/SortAndFilters'
 
@@ -23,39 +24,61 @@ const accessFilterItems = [
   { display: 'compute ', value: FilterByAccessOptions.Compute }
 ]
 
+const complianceFilterItems = [
+  { display: 'Gaia-X compliant', value: FilterByIsInComplianceOptions.True }
+]
+
 export default function FilterPrice({
   serviceType,
   accessType,
+  complianceType,
   setServiceType,
   setAccessType,
+  setComplianceType,
   addFiltersToUrl,
   className
 }: {
   serviceType: string
   accessType: string
+  complianceType: string
   setServiceType: React.Dispatch<React.SetStateAction<string>>
   setAccessType: React.Dispatch<React.SetStateAction<string>>
+  setComplianceType: React.Dispatch<React.SetStateAction<string>>
   addFiltersToUrl?: boolean
   className?: string
 }): ReactElement {
   const navigate = useNavigate()
   const [serviceSelections, setServiceSelections] = useState<string[]>([])
   const [accessSelections, setAccessSelections] = useState<string[]>([])
+  const [complianceSelections, setComplianceSelections] = useState<string[]>([])
 
   async function applyFilter(filter: string, filterType: string) {
-    filterType === 'accessType' ? setAccessType(filter) : setServiceType(filter)
+    if (filterType === 'accessType') {
+      setAccessType(filter)
+    } else if (filterType === 'serviceType') {
+      setServiceType(filter)
+    } else if (filterType === 'complianceType') {
+      setComplianceType(filter)
+    }
+
     if (addFiltersToUrl) {
       let urlLocation = ''
       if (filterType.localeCompare('accessType') === 0) {
         urlLocation = await addExistingParamsToUrl(location, ['accessType'])
-      } else {
+      } else if (filterType.localeCompare('serviceType') === 0) {
         urlLocation = await addExistingParamsToUrl(location, ['serviceType'])
+      } else if (filterType.localeCompare('complianceType') === 0) {
+        urlLocation = await addExistingParamsToUrl(location, ['complianceType'])
       }
 
       if (filter && location.search.indexOf(filterType) === -1) {
-        filterType === 'accessType'
-          ? (urlLocation = `${urlLocation}&accessType=${filter}`)
-          : (urlLocation = `${urlLocation}&serviceType=${filter}`)
+        if (filterType === 'accessType') {
+          urlLocation = `${urlLocation}&accessType=${filter}`
+        } else if (filterType === 'serviceType') {
+          urlLocation = `${urlLocation}&serviceType=${filter}`
+        } else if (filterType === 'complianceType') {
+          urlLocation = `${urlLocation}&complianceType=${filter}`
+        }
       }
 
       navigate(urlLocation)
@@ -91,7 +114,10 @@ export default function FilterPrice({
           setAccessSelections([value])
         }
       }
-    } else {
+    } else if (
+      value === FilterByTypeOptions.Data ||
+      value === FilterByTypeOptions.Algorithm
+    ) {
       if (isSelected) {
         if (serviceSelections.length > 1) {
           const otherValue = serviceFilterItems.find(
@@ -112,18 +138,42 @@ export default function FilterPrice({
           setServiceSelections([value])
         }
       }
+    } else {
+      if (isSelected) {
+        if (complianceSelections.length > 1) {
+          const otherValue = complianceFilterItems.find(
+            (p) => p.value !== value
+          ).value
+          await applyFilter(otherValue, 'complianceType')
+          setComplianceSelections([otherValue])
+        } else {
+          await applyFilter(undefined, 'complianceType')
+          setComplianceSelections([])
+        }
+      } else {
+        if (complianceSelections.length) {
+          await applyFilter(undefined, 'complianceType')
+          setComplianceSelections(serviceFilterItems.map((p) => p.value))
+        } else {
+          await applyFilter(value, 'complianceType')
+          setComplianceSelections([value])
+        }
+      }
     }
   }
 
   async function applyClearFilter(addFiltersToUrl: boolean) {
     setServiceSelections([])
     setAccessSelections([])
+    setComplianceSelections([])
     setServiceType(undefined)
     setAccessType(undefined)
+    setComplianceType(undefined)
     if (addFiltersToUrl) {
       let urlLocation = await addExistingParamsToUrl(location, [
         'accessType',
-        'serviceType'
+        'serviceType',
+        'complianceType'
       ])
       urlLocation = `${urlLocation}`
       navigate(urlLocation)
@@ -183,9 +233,34 @@ export default function FilterPrice({
           )
         })}
       </div>
+      <div>
+        {complianceFilterItems.map((e, index) => {
+          const isInComplianceSelected =
+            e.value === complianceType || complianceSelections.includes(e.value)
+          const selectFilter = cx({
+            [styles.selected]: isInComplianceSelected,
+            [styles.filter]: true
+          })
+          return (
+            <Button
+              size="small"
+              style="text"
+              key={index}
+              className={selectFilter}
+              onClick={async () => {
+                handleSelectedFilter(isInComplianceSelected, e.value)
+              }}
+            >
+              {e.display}
+            </Button>
+          )
+        })}
+      </div>
       {clearFilters.map((e, index) => {
         const showClear =
-          accessSelections.length > 0 || serviceSelections.length > 0
+          accessSelections.length > 0 ||
+          serviceSelections.length > 0 ||
+          complianceSelections.length > 0
         return (
           <Button
             size="small"
