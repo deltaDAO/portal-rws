@@ -29,7 +29,7 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
   const { attributes } = ddo.findServiceByType(
     'metadata'
   ) as ServiceMetadataMarket
-  const isCompliant = attributes.additionalInformation.compliance.gx
+  const isCompliant = !!attributes.additionalInformation?.compliance?.gx
   const { name, type, author } = attributes.main
   const { dataTokenInfo } = ddo
   const isCompute = Boolean(ddo?.findServiceByType('compute'))
