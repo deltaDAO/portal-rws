@@ -31,13 +31,14 @@ export function accountTruncate(account: string): string {
   return truncated
 }
 
-export function nameTruncate(name: string): string {
+export function nameTruncate(name: string, maxLength?: number): string {
+  const mLength = maxLength || 25
   if (!name) {
     return
-  } else if (name.length < 26) {
+  } else if (name.length <= mLength) {
     return name
   }
-  return name.substring(0, 25) + '…'
+  return name.substring(0, mLength) + '…'
 }
 
 export function getNetworkType(network: EthereumListsChain): string {
