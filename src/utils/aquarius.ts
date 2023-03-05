@@ -4,6 +4,7 @@ import {
   Logger,
   publisherTrustedAlgorithm as PublisherTrustedAlgorithm
 } from '@oceanprotocol/lib/'
+
 import { AssetSelectionAsset } from '../components/molecules/FormFields/AssetSelection'
 import { PriceList, getAssetsPriceList } from './subgraph'
 import axios, { CancelToken, AxiosResponse } from 'axios'
@@ -86,7 +87,7 @@ export function generateBaseQuery(
         filter: [
           ...(baseQueryParams.filters || []),
           getFilterTerm('chainId', baseQueryParams.chainIds),
-          getFilterTerm('_index', 'aquarius'),
+          getFilterTerm('_index', 'ocean'),
           ...(baseQueryParams.ignorePurgatory
             ? []
             : [getFilterTerm('isInPurgatory', 'false')])
@@ -164,7 +165,7 @@ export async function queryMetadata(
 ): Promise<PagedAssets> {
   try {
     const response: AxiosResponse<SearchResponse> = await axios.post(
-      `${metadataCacheUri}/api/aquarius/assets/query`,
+      `${metadataCacheUri}/api/v1/aquarius/assets/query`,
       { ...query },
       { cancelToken }
     )
@@ -185,7 +186,7 @@ export async function retrieveDDO(
 ): Promise<DDO> {
   try {
     const response: AxiosResponse<DDO> = await axios.get(
-      `${metadataCacheUri}/api/aquarius/assets/ddo/${did}`,
+      `${metadataCacheUri}/api/v1/aquarius/assets/ddo/${did}`,
       { cancelToken }
     )
     if (!response || response.status !== 200 || !response.data) return
@@ -210,7 +211,7 @@ export async function getAssetsNames(
 ): Promise<Record<string, string>> {
   try {
     const response: AxiosResponse<Record<string, string>> = await axios.post(
-      `${metadataCacheUri}/api/aquarius/assets/names`,
+      `${metadataCacheUri}/api/v1/aquarius/assets/names`,
       { didList },
       { cancelToken }
     )
@@ -279,6 +280,7 @@ export async function retrieveDDOListByDIDs(
     Logger.error(error.message)
   }
 }
+
 export async function transformDDOToAssetSelection(
   datasetProviderEndpoint: string | undefined,
   ddoList: DDO[],

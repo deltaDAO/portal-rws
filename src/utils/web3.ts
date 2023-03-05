@@ -32,7 +32,7 @@ export function accountTruncate(account: string): string {
 }
 
 export function nameTruncate(name: string, maxLength?: number): string {
-  const mLength = maxLength || 25
+  const mLength = maxLength || 30
   if (!name) {
     return
   } else if (name.length <= mLength) {

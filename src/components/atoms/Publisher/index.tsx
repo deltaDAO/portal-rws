@@ -18,7 +18,7 @@ export default function Publisher({
   className?: string
 }): ReactElement {
   const name =
-    nameTruncate(verifiedServiceProviderName) || accountTruncate(account)
+    nameTruncate(verifiedServiceProviderName, 35) || accountTruncate(account)
 
   const styleClasses = cx({
     publisher: true,
