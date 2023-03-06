@@ -391,7 +391,7 @@ export async function validateDockerImage(
   return isValid
 }
 
-export function transformPublishAlgorithmFormToMetadata(
+export async function transformPublishAlgorithmFormToMetadata(
   {
     name,
     author,
@@ -402,10 +402,11 @@ export function transformPublishAlgorithmFormToMetadata(
     entrypoint,
     termsAndConditions,
     noPersonalData,
-    files
+    files,
+    serviceSelfDescription
   }: Partial<MetadataPublishFormAlgorithm>,
   ddo?: DDO
-): MetadataMarket {
+): Promise<MetadataMarket> {
   const currentTime = toStringNoMS(new Date())
   const fileUrl = typeof files !== 'string' && sanitizeUrl(files[0].url)
   const algorithmLanguage = getAlgorithmFileExtension(fileUrl)
@@ -415,6 +416,15 @@ export function transformPublishAlgorithmFormToMetadata(
     entrypoint,
     algorithmLanguage
   )
+
+  const transformedServiceSelfDescription =
+    typeof serviceSelfDescription === 'string'
+      ? undefined
+      : {
+          url: serviceSelfDescription?.[0]?.url,
+          raw: serviceSelfDescription?.[0]?.raw
+        }
+
   const metadata: MetadataMarket = {
     main: {
       ...AssetModel.main,
@@ -433,6 +443,10 @@ export function transformPublishAlgorithmFormToMetadata(
       termsAndConditions,
       consent: {
         noPersonalData
+      },
+      serviceSelfDescription: transformedServiceSelfDescription,
+      compliance: {
+        gx: await verifySelfDescription(transformedServiceSelfDescription)
       }
     }
   }

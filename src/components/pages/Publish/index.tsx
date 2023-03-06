@@ -164,7 +164,7 @@ export default function PublishPage({
       nextState?: Partial<FormikState<Partial<MetadataPublishFormAlgorithm>>>
     ) => void
   ): Promise<void> {
-    const metadata = transformPublishAlgorithmFormToMetadata(values)
+    const metadata = await transformPublishAlgorithmFormToMetadata(values)
     const timeout = mapTimeoutStringToSeconds(values.timeout)
     const validDockerImage =
       values.dockerImage === 'custom image'
@@ -180,7 +180,7 @@ export default function PublishPage({
         )
 
         const ddo = await publish(
-          metadata as unknown as Metadata,
+          metadata,
           values.algorithmPrivacy === true ? 'compute' : 'access',
           values.dataTokenOptions,
           timeout,
