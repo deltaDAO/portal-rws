@@ -21,7 +21,8 @@ export default function PublishedList({
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState<number>(1)
   const [service, setServiceType] = useState()
-  const [access, setAccsesType] = useState()
+  const [access, setAccessType] = useState()
+  const [compliance, setComplianceType] = useState()
   const newCancelToken = useCancelToken()
 
   const getPublished = useCallback(
@@ -72,7 +73,9 @@ export default function PublishedList({
           serviceType={service}
           setServiceType={setServiceType}
           accessType={access}
-          setAccessType={setAccsesType}
+          setAccessType={setAccessType}
+          complianceType={compliance}
+          setComplianceType={setComplianceType}
           className={styles.filters}
         />
       </div>
