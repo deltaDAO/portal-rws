@@ -12,7 +12,6 @@ import Loader from '../../atoms/Loader'
 import Markdown from '../../atoms/Markdown'
 import BoxSelection from './BoxSelection'
 import styles from './ServiceSelfDescription.module.css'
-import { IVerifiablePresentation } from '../../../@types/MetaData'
 
 const serviceSelfDescriptionOptions = [
   {
@@ -41,31 +40,9 @@ export default function ServiceSelfDescription(
       props?.setStatus('loading')
 
       const parsedServiceSelfDescription = JSON.parse(rawServiceSelfDescription)
-      let signedServiceSelfDescription
-      if (
-        parsedServiceSelfDescription.type &&
-        Array.isArray(parsedServiceSelfDescription.type) &&
-        (parsedServiceSelfDescription.type as string[]).indexOf(
-          'VerifiablePresentation'
-        ) !== -1
-      ) {
-        if (
-          (
-            parsedServiceSelfDescription as IVerifiablePresentation
-          ).verifiableCredential.filter((vc) =>
-            vc.type.includes('ParticipantCredential')
-          )
-        ) {
-          signedServiceSelfDescription = parsedServiceSelfDescription
-        }
-      }
-      signedServiceSelfDescription =
-        parsedServiceSelfDescription?.complianceCredential
-          ? parsedServiceSelfDescription
-          : await signServiceSelfDescription(parsedServiceSelfDescription)
 
       const { verified } = await verifyServiceSelfDescription({
-        body: signedServiceSelfDescription,
+        body: parsedServiceSelfDescription,
         raw: true
       })
       setIsVerified(verified)
@@ -77,7 +54,7 @@ export default function ServiceSelfDescription(
         return
       }
 
-      helpers.setValue([{ raw: signedServiceSelfDescription }])
+      helpers.setValue([{ raw: parsedServiceSelfDescription }])
       toast.success(
         'Great! The provided service self-description looks good. 🐳'
       )

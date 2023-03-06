@@ -11,7 +11,8 @@ module.exports = {
     process.env.GATSBY_METADATACACHE_URI || 'https://aquarius.delta-dao.com',
 
   complianceUri:
-    process.env.GATSBY_COMPLIANCE_URI || 'https://cs.gx.test.sphereon.com/api',
+    process.env.GATSBY_COMPLIANCE_URI ||
+    'https://cs.gx.test.sphereon.com/api/2210vp',
 
   // List of chainIds which metadata cache queries will return by default.
   // This preselects the Chains user preferences.
