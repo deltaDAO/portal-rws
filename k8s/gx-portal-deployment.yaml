@@ -24,7 +24,7 @@ spec:
       containers:
         - env:
             - name: GATSBY_COMPLIANCE_URI
-              value: https://cs.gx.test.sphereon.com/api/2210vp
+              value: https://cs.gx.test.sphereon.com/api
             - name: GATSBY_METADATACACHE_URI
               value: https://aquarius.delta-dao.com
           image: vdxcontainerregistry2022051200.azurecr.io/gx-fma-portal:v2.0.2

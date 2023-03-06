@@ -22,7 +22,9 @@ export default function MetaFull(): ReactElement {
           <Publisher
             account={ddo?.publicKey[0].owner}
             verifiedServiceProviderName={
-              isServiceSelfDescriptionVerified ? author : undefined
+              isServiceSelfDescriptionVerified
+                ? author
+                : `${author} (unverified)`
             }
           />
         }

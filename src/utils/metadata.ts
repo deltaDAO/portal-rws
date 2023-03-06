@@ -160,10 +160,24 @@ export async function verifyServiceSelfDescription({
   responseBody?: any
 }> {
   if (!body) return { verified: false }
-
-  const baseUrl = raw
-    ? `${complianceUri}/compliance`
-    : `${complianceUri}/participant/verify`
+  if (!raw) {
+    if (!this.isString(body)) {
+      Logger.error(`Expected a string url but received: ${body}`)
+      return { verified: false }
+    }
+    body = await axios.get(body)
+  }
+  const soParsed = JSON.parse(body)
+  let baseUrl
+  if (
+    soParsed.type &&
+    Array.isArray(soParsed.type) &&
+    (soParsed.type as string[]).indexOf('VerifiablePresentation') !== -1
+  ) {
+    baseUrl = `${complianceUri}/service-offering/verify/raw`
+  } else {
+    baseUrl = `${complianceUri}/2210vp/service-offering/verify/raw`
+  }
   const requestBody = raw ? body : { url: body }
 
   try {
@@ -438,4 +452,11 @@ export function transformPublishAlgorithmFormToMetadata(
   }
 
   return metadata
+}
+
+export function isString(value: unknown): boolean {
+  return (
+    typeof value === 'string' ||
+    Object.prototype.toString.call(value) === '[object String]'
+  )
 }
