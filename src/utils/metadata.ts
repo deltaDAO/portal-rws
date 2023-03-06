@@ -265,10 +265,10 @@ const verifySelfDescription = async (args: {
   url?: string
   rawSD?: any
 }): Promise<boolean> => {
-  let result
-  if (args.url) {
+  let result = { verified: false }
+  if (args?.url) {
     result = await verifyServiceSelfDescription({ body: args.url, raw: false })
-  } else if (args.rawSD) {
+  } else if (args?.rawSD) {
     result = await verifyServiceSelfDescription({ body: args.rawSD, raw: true })
   }
   return result.verified

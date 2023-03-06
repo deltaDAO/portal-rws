@@ -12,7 +12,7 @@ module.exports = {
 
   complianceUri:
     process.env.GATSBY_COMPLIANCE_URI ||
-    'https://sphereon-test.ddns.net/v2206/api',
+    'https://compliance.gaia-x.eu/v2206/api',
 
   // List of chainIds which metadata cache queries will return by default.
   // This preselects the Chains user preferences.
