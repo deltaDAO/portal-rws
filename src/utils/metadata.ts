@@ -265,13 +265,13 @@ const verifySelfDescription = async (args: {
   url?: string
   rawSD?: any
 }): Promise<boolean> => {
-  let result = { verified: false }
   if (args?.url) {
-    result = await verifyServiceSelfDescription({ body: args.url, raw: false })
-  } else if (args?.rawSD) {
-    result = await verifyServiceSelfDescription({ body: args.rawSD, raw: true })
+    return (await verifyServiceSelfDescription({ body: args.url, raw: false }))
+      .verified
+  } else {
+    return (await verifyServiceSelfDescription({ body: args.rawSD, raw: true }))
+      .verified
   }
-  return result.verified
 }
 
 export async function transformPublishFormToMetadata(
@@ -321,7 +321,10 @@ export async function transformPublishFormToMetadata(
       },
       serviceSelfDescription: transformedServiceSelfDescription,
       compliance: {
-        gx: await verifySelfDescription(transformedServiceSelfDescription)
+        gx: await verifySelfDescription({
+          url: transformedServiceSelfDescription.url,
+          rawSD: transformedServiceSelfDescription.raw
+        })
       }
     }
   }
@@ -446,7 +449,10 @@ export async function transformPublishAlgorithmFormToMetadata(
       },
       serviceSelfDescription: transformedServiceSelfDescription,
       compliance: {
-        gx: await verifySelfDescription(transformedServiceSelfDescription)
+        gx: await verifySelfDescription({
+          url: transformedServiceSelfDescription.url,
+          rawSD: transformedServiceSelfDescription.raw
+        })
       }
     }
   }
