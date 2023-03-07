@@ -26,7 +26,15 @@ export default function PublishedList({
   const newCancelToken = useCancelToken()
 
   const getPublished = useCallback(
-    async (accountId, chainIds, page, service, access, cancelToken) => {
+    async (
+      accountId,
+      chainIds,
+      page,
+      service,
+      access,
+      compliance,
+      cancelToken
+    ) => {
       try {
         setIsLoading(true)
         const result = await getPublishedAssets(
@@ -35,7 +43,8 @@ export default function PublishedList({
           cancelToken,
           page,
           service,
-          access
+          access,
+          compliance
         )
         setQueryResult(result)
       } catch (error) {
@@ -54,7 +63,15 @@ export default function PublishedList({
   useEffect(() => {
     if (!accountId) return
 
-    getPublished(accountId, chainIds, page, service, access, newCancelToken())
+    getPublished(
+      accountId,
+      chainIds,
+      page,
+      service,
+      access,
+      compliance,
+      newCancelToken()
+    )
   }, [
     accountId,
     page,
@@ -63,7 +80,8 @@ export default function PublishedList({
     newCancelToken,
     getPublished,
     service,
-    access
+    access,
+    compliance
   ])
 
   return accountId ? (

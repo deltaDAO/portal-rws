@@ -34,7 +34,7 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
   ) as ServiceMetadataMarket
   const isCompliant = !!attributes.additionalInformation.compliance?.gx
   const { name, type } = attributes.main
-  // It shouldn't be undefined anymore
+  // It shouldn't be undefined anymore, but maybe the best place to handle it would be in the input validation of the publish page
   const sd = attributes.additionalInformation?.serviceSelfDescription
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
