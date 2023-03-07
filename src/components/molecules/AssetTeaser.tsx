@@ -11,7 +11,10 @@ import LinkOpener from '../molecules/LinkOpener'
 import { BestPrice } from '../../models/BestPrice'
 import Loader from '../atoms/Loader'
 import classNames from 'classnames/bind'
-import { ServiceMetadataMarket } from '../../@types/MetaData'
+import {
+  IVerifiablePresentation,
+  ServiceMetadataMarket
+} from '../../@types/MetaData'
 
 const cx = classNames.bind(styles)
 
@@ -30,7 +33,15 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
     'metadata'
   ) as ServiceMetadataMarket
   const isCompliant = !!attributes.additionalInformation.compliance?.gx
-  const { name, type, author } = attributes.main
+  const { name, type } = attributes.main
+  // It shouldn't be undefined anymore
+  const sd = attributes.additionalInformation?.serviceSelfDescription
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const legalName = sd?.raw
+    ? (sd.raw as IVerifiablePresentation).verifiableCredential[2]
+        .credentialSubject['gax-trust-framework:legalName']['@value']
+    : ddo?.publicKey[0].owner
   const { dataTokenInfo } = ddo
   const isCompute = Boolean(ddo?.findServiceByType('compute'))
   const accessType = isCompute ? 'compute' : 'access'
@@ -48,7 +59,9 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
             <Publisher
               account={owner}
               verifiedServiceProviderName={
-                isCompliant ? author : `${author} (unverified)`
+                isCompliant
+                  ? legalName
+                  : `${ddo?.publicKey[0].owner} (unverified)`
               }
               minimal
               className={styles.publisher}
