@@ -5,7 +5,9 @@ import {
   MetadataMarket,
   MetadataPublishFormDataset,
   MetadataPublishFormAlgorithm,
-  ServiceSelfDescription
+  ServiceSelfDescription,
+  ServiceMetadataMarket,
+  IVerifiablePresentation
 } from '../@types/MetaData'
 import { toStringNoMS } from '.'
 import AssetModel from '../models/Asset'
@@ -458,4 +460,18 @@ export async function transformPublishAlgorithmFormToMetadata(
   }
 
   return metadata
+}
+
+export function getLegalName(ddo: DDO) {
+  const { attributes } = ddo.findServiceByType(
+    'metadata'
+  ) as ServiceMetadataMarket
+  const sd = attributes.additionalInformation?.serviceSelfDescription
+  if (sd?.raw) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return (sd.raw as IVerifiablePresentation).verifiableCredential[2]
+      .credentialSubject['gax-trust-framework:legalName']['@value']
+  }
+  return ddo?.publicKey[0].owner
 }

@@ -11,10 +11,8 @@ import LinkOpener from '../molecules/LinkOpener'
 import { BestPrice } from '../../models/BestPrice'
 import Loader from '../atoms/Loader'
 import classNames from 'classnames/bind'
-import {
-  IVerifiablePresentation,
-  ServiceMetadataMarket
-} from '../../@types/MetaData'
+import { ServiceMetadataMarket } from '../../@types/MetaData'
+import { getLegalName } from '../../utils/metadata'
 
 const cx = classNames.bind(styles)
 
@@ -34,14 +32,7 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
   ) as ServiceMetadataMarket
   const isCompliant = !!attributes.additionalInformation.compliance?.gx
   const { name, type } = attributes.main
-  // It shouldn't be undefined anymore, but maybe the best place to handle it would be in the input validation of the publish page
-  const sd = attributes.additionalInformation?.serviceSelfDescription
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const legalName = sd?.raw
-    ? (sd.raw as IVerifiablePresentation).verifiableCredential[2]
-        .credentialSubject['gax-trust-framework:legalName']['@value']
-    : ddo?.publicKey[0].owner
+  const legalName = getLegalName(ddo)
   const { dataTokenInfo } = ddo
   const isCompute = Boolean(ddo?.findServiceByType('compute'))
   const accessType = isCompute ? 'compute' : 'access'

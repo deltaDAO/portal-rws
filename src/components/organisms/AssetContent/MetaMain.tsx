@@ -8,10 +8,7 @@ import Time from '../../atoms/Time'
 import AssetType from '../../atoms/AssetType'
 import styles from './MetaMain.module.css'
 import VerifiedBadge from '../../atoms/VerifiedBadge'
-import {
-  IVerifiablePresentation,
-  ServiceMetadataMarket
-} from '../../../@types/MetaData'
+import { getLegalName } from '../../../utils/metadata'
 
 export default function MetaMain(): ReactElement {
   const {
@@ -20,20 +17,10 @@ export default function MetaMain(): ReactElement {
     type,
     isAssetNetwork,
     isServiceSelfDescriptionVerified,
-    isVerifyingSD,
-    verifiedServiceProviderName
+    isVerifyingSD
   } = useAsset()
   const { web3ProviderInfo } = useWeb3()
-  const { attributes } = ddo?.findServiceByType(
-    'metadata'
-  ) as ServiceMetadataMarket
-  const sd = attributes.additionalInformation?.serviceSelfDescription
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const legalName = sd?.raw
-    ? (sd.raw as IVerifiablePresentation).verifiableCredential[2]
-        .credentialSubject['gax-trust-framework:legalName']['@value']
-    : ddo?.publicKey[0].owner
+  const legalName = getLegalName(ddo)
   const isCompute = Boolean(ddo?.findServiceByType('compute'))
   const accessType = isCompute ? 'compute' : 'access'
   const blockscoutNetworks = [1287, 2021000, 2021001, 44787, 246, 1285]
