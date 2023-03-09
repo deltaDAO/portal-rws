@@ -68,7 +68,7 @@ export default function MetaMain(): ReactElement {
             verifiedServiceProviderName={
               isServiceSelfDescriptionVerified
                 ? legalName
-                : `${ddo.publicKey[0].owner} (unverified)`
+                : `${legalName} (unverified)`
             }
           />
           <p>

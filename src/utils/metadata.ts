@@ -462,7 +462,7 @@ export async function transformPublishAlgorithmFormToMetadata(
   return metadata
 }
 
-export function getLegalName(ddo: DDO) {
+export function getLegalName(ddo: DDO): string {
   const { attributes } = ddo.findServiceByType(
     'metadata'
   ) as ServiceMetadataMarket

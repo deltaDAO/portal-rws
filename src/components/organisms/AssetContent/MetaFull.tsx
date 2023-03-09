@@ -24,7 +24,7 @@ export default function MetaFull(): ReactElement {
             verifiedServiceProviderName={
               isServiceSelfDescriptionVerified
                 ? legalName
-                : `${ddo.publicKey[0].owner} (unverified)`
+                : `${legalName} (unverified)`
             }
           />
         }
