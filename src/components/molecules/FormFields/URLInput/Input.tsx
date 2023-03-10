@@ -30,7 +30,7 @@ export default function URLInput({
     const isValueValid = isSanitizedUrl(field.value)
 
     setButtonDisabled(!isValueValid)
-  }, [field?.value, meta?.error])
+  }, [field?.value, meta?.error, props])
 
   return (
     <InputGroup>

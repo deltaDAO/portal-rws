@@ -11,6 +11,7 @@ export async function fileinfo(
     const response: AxiosResponse = await axios.post(
       `${providerUri}/api/v1/services/fileinfo`,
       {
+        type: 'url',
         url,
         cancelToken
       }

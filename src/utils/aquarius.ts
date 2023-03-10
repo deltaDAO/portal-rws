@@ -374,17 +374,25 @@ export async function getPublishedAssets(
   cancelToken: CancelToken,
   page?: number,
   type?: string,
-  accesType?: string
+  accessType?: string,
+  complianceType?: string
 ): Promise<PagedAssets> {
   if (!accountId) return
 
   const filters: FilterTerm[] = []
 
   filters.push(getFilterTerm('publicKey.owner', accountId.toLowerCase()))
-  accesType !== undefined &&
-    filters.push(getFilterTerm('service.type', accesType))
+  accessType !== undefined &&
+    filters.push(getFilterTerm('service.type', accessType))
   type !== undefined &&
     filters.push(getFilterTerm('service.attributes.main.type', type))
+  complianceType !== undefined &&
+    filters.push(
+      getFilterTerm(
+        'service.attributes.additionalInformation.compliance.gx',
+        complianceType
+      )
+    )
 
   const baseQueryParams = {
     chainIds,

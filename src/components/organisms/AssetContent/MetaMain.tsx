@@ -8,6 +8,7 @@ import Time from '../../atoms/Time'
 import AssetType from '../../atoms/AssetType'
 import styles from './MetaMain.module.css'
 import VerifiedBadge from '../../atoms/VerifiedBadge'
+import { getLegalName } from '../../../utils/metadata'
 
 export default function MetaMain(): ReactElement {
   const {
@@ -16,11 +17,10 @@ export default function MetaMain(): ReactElement {
     type,
     isAssetNetwork,
     isServiceSelfDescriptionVerified,
-    isVerifyingSD,
-    verifiedServiceProviderName
+    isVerifyingSD
   } = useAsset()
   const { web3ProviderInfo } = useWeb3()
-
+  const legalName = getLegalName(ddo)
   const isCompute = Boolean(ddo?.findServiceByType('compute'))
   const accessType = isCompute ? 'compute' : 'access'
   const blockscoutNetworks = [1287, 2021000, 2021001, 44787, 246, 1285]
@@ -65,7 +65,11 @@ export default function MetaMain(): ReactElement {
           Published By{' '}
           <Publisher
             account={owner}
-            verifiedServiceProviderName={verifiedServiceProviderName}
+            verifiedServiceProviderName={
+              isServiceSelfDescriptionVerified
+                ? legalName
+                : `${ddo.publicKey[0].owner} (unverified)`
+            }
           />
           <p>
             <Time date={ddo?.created} relative />
