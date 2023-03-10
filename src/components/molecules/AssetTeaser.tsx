@@ -50,9 +50,7 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
             <Publisher
               account={owner}
               verifiedServiceProviderName={
-                isCompliant
-                  ? legalName
-                  : `${ddo?.publicKey[0].owner} (unverified)`
+                isCompliant ? legalName : `${legalName} (unverified)`
               }
               minimal
               className={styles.publisher}

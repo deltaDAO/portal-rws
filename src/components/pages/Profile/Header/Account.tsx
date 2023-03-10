@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useCallback, useEffect, useState } from 'react'
 import { useUserPreferences } from '../../../../providers/UserPreferences'
 import ExplorerLink from '../../../atoms/ExplorerLink'
 import NetworkName from '../../../atoms/NetworkName'
@@ -7,6 +7,7 @@ import Copy from '../../../atoms/Copy'
 import Blockies from '../../../atoms/Blockies'
 import styles from './Account.module.css'
 import { useProfile } from '../../../../providers/Profile'
+import { getLegalName } from '../../../../utils/metadata'
 
 export default function Account({
   accountId
@@ -14,7 +15,15 @@ export default function Account({
   accountId: string
 }): ReactElement {
   const { chainIds } = useUserPreferences()
-  const { profile } = useProfile()
+  const { profile, assets } = useProfile()
+  const [legalName, setLegalName] = useState('')
+
+  useEffect(() => {
+    if (assets) {
+      const ddo = assets.find((ddo) => getLegalName(ddo))
+      setLegalName(getLegalName(ddo))
+    }
+  }, [assets])
 
   return (
     <div className={styles.account}>
@@ -39,7 +48,7 @@ export default function Account({
       </figure>
 
       <div>
-        <h3 className={styles.name}>{profile?.name}</h3>
+        <h3 className={styles.name}>{legalName || profile?.name}</h3>
         {accountId && (
           <code
             className={styles.accountId}

@@ -151,25 +151,45 @@ export async function signServiceSelfDescription(body: any): Promise<any> {
   }
 }
 
+export function isString(value: unknown): boolean {
+  return (
+    typeof value === 'string' ||
+    Object.prototype.toString.call(value) === '[object String]'
+  )
+}
+
 export async function verifyServiceSelfDescription({
   body,
   raw
 }: {
-  body: string
+  body: any
   raw?: boolean
 }): Promise<{
   verified: boolean
   responseBody?: any
 }> {
   if (!body) return { verified: false }
+  if (!raw) {
+    if (!isString(body)) {
+      Logger.error(`Expected a string url but received: ${body}`)
+      return { verified: false }
+    }
+    body = (await axios.get(body)).data
+  }
 
-  const baseUrl = raw
-    ? `${complianceUri}/compliance`
-    : `${complianceUri}/participant/verify`
-  const requestBody = raw ? body : { url: body }
+  let baseUrl
+  if (
+    body.type &&
+    Array.isArray(body.type) &&
+    (body.type as string[]).indexOf('VerifiablePresentation') !== -1
+  ) {
+    baseUrl = `${complianceUri}/2210vp/compliance`
+  } else {
+    baseUrl = `${complianceUri}/participant/verify/raw`
+  }
 
   try {
-    const response = await axios.post(baseUrl, requestBody)
+    const response = await axios.post(baseUrl, body)
     if (response?.status === 409) {
       return {
         verified: false,
@@ -462,7 +482,7 @@ export async function transformPublishAlgorithmFormToMetadata(
   return metadata
 }
 
-export function getLegalName(ddo: DDO) {
+export function getLegalName(ddo: DDO): string {
   const { attributes } = ddo.findServiceByType(
     'metadata'
   ) as ServiceMetadataMarket
