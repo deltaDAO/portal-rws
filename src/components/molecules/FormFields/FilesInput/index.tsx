@@ -34,7 +34,8 @@ export default function FilesInput({
         if (field.name === 'serviceSelfDescription') {
           setStatus('loading')
           const { verified } = await verifyServiceSelfDescription({
-            body: fileUrl
+            body: fileUrl,
+            raw: false
           })
           const serviceSelfDescription = await getServiceSelfDescription(
             fileUrl
