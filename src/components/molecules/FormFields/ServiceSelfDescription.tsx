@@ -40,11 +40,21 @@ export default function ServiceSelfDescription(
       props?.setStatus('loading')
 
       const parsedServiceSelfDescription = JSON.parse(rawServiceSelfDescription)
-      const signedServiceSelfDescription =
-        parsedServiceSelfDescription?.complianceCredential
-          ? parsedServiceSelfDescription
-          : await signServiceSelfDescription(parsedServiceSelfDescription)
-
+      let signedServiceSelfDescription
+      if (
+        parsedServiceSelfDescription.type &&
+        Array.isArray(parsedServiceSelfDescription.type) &&
+        (parsedServiceSelfDescription.type as string[]).indexOf(
+          'VerifiablePresentation'
+        ) !== -1
+      ) {
+        signedServiceSelfDescription = parsedServiceSelfDescription
+      } else {
+        signedServiceSelfDescription =
+          parsedServiceSelfDescription?.complianceCredential
+            ? parsedServiceSelfDescription
+            : await signServiceSelfDescription(parsedServiceSelfDescription)
+      }
       const { verified } = await verifyServiceSelfDescription({
         body: signedServiceSelfDescription,
         raw: true

@@ -24,6 +24,7 @@ import {
   getFormattedCodeString,
   getServiceSelfDescription
 } from '../../../utils/metadata'
+import Accordion from '../../atoms/Accordion'
 export interface AssetContentProps {
   path?: string
 }
@@ -100,16 +101,17 @@ export default function AssetContent(props: AssetContentProps): ReactElement {
     if (!isServiceSelfDescriptionVerified) return
     const { raw, url } = metadata?.additionalInformation?.serviceSelfDescription
     if (raw) {
-      const formattedServiceSelfDescription = `## Service Self-Description\n${getFormattedCodeString(
-        { body: raw, raw: true }
-      )}`
+      const formattedServiceSelfDescription = getFormattedCodeString({
+        body: raw,
+        raw: true
+      })
       setServiceSelfDescription(formattedServiceSelfDescription)
     }
     if (url) {
       getServiceSelfDescription(url).then((serviceSelfDescription) => {
-        const formattedServiceSelfDescription = `## Service Self-Description\n${getFormattedCodeString(
-          { body: serviceSelfDescription }
-        )}`
+        const formattedServiceSelfDescription = getFormattedCodeString({
+          body: serviceSelfDescription
+        })
         setServiceSelfDescription(formattedServiceSelfDescription)
       })
     }
@@ -150,12 +152,6 @@ export default function AssetContent(props: AssetContentProps): ReactElement {
                   className={styles.description}
                   text={metadata?.additionalInformation?.description || ''}
                 />
-                {isServiceSelfDescriptionVerified && (
-                  <Markdown
-                    className={styles.description}
-                    text={serviceSelfDescription || ''}
-                  />
-                )}
 
                 <MetaSecondary />
 
@@ -201,6 +197,12 @@ export default function AssetContent(props: AssetContentProps): ReactElement {
             <EditHistory />
             {debug === true && <DebugOutput title="DDO" output={ddo} />}
           </div>
+          {isServiceSelfDescriptionVerified && (
+            <Accordion
+              content={serviceSelfDescription || ''}
+              title="Service Self-Description"
+            />
+          )}
         </div>
         <div className={styles.actions}>
           <AssetActions />

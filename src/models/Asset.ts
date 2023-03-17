@@ -22,6 +22,9 @@ const AssetModel: MetadataMarket = {
     termsAndConditions: false,
     consent: {
       noPersonalData: false
+    },
+    compliance: {
+      gx: false
     }
   }
 }

@@ -29,10 +29,9 @@ export default function PageGatsbySearch(props: PageProps): ReactElement {
                 (totalResults > 1 ? ' results' : ' result') +
                 ' for ' +
                 searchValue
-            : totalResults + ' results'
+            : totalResults + (totalResults > 1 ? ' results' : ' result')
           : 'Searching...'
       }`
-
   return (
     <Page
       title={`Catalogue - ${

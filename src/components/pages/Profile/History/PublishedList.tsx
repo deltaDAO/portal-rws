@@ -21,11 +21,20 @@ export default function PublishedList({
   const [isLoading, setIsLoading] = useState(false)
   const [page, setPage] = useState<number>(1)
   const [service, setServiceType] = useState()
-  const [access, setAccsesType] = useState()
+  const [access, setAccessType] = useState()
+  const [compliance, setComplianceType] = useState()
   const newCancelToken = useCancelToken()
 
   const getPublished = useCallback(
-    async (accountId, chainIds, page, service, access, cancelToken) => {
+    async (
+      accountId,
+      chainIds,
+      page,
+      service,
+      access,
+      compliance,
+      cancelToken
+    ) => {
       try {
         setIsLoading(true)
         const result = await getPublishedAssets(
@@ -34,7 +43,8 @@ export default function PublishedList({
           cancelToken,
           page,
           service,
-          access
+          access,
+          compliance
         )
         setQueryResult(result)
       } catch (error) {
@@ -53,7 +63,15 @@ export default function PublishedList({
   useEffect(() => {
     if (!accountId) return
 
-    getPublished(accountId, chainIds, page, service, access, newCancelToken())
+    getPublished(
+      accountId,
+      chainIds,
+      page,
+      service,
+      access,
+      compliance,
+      newCancelToken()
+    )
   }, [
     accountId,
     page,
@@ -62,7 +80,8 @@ export default function PublishedList({
     newCancelToken,
     getPublished,
     service,
-    access
+    access,
+    compliance
   ])
 
   return accountId ? (
@@ -72,7 +91,9 @@ export default function PublishedList({
           serviceType={service}
           setServiceType={setServiceType}
           accessType={access}
-          setAccessType={setAccsesType}
+          setAccessType={setAccessType}
+          complianceType={compliance}
+          setComplianceType={setComplianceType}
           className={styles.filters}
         />
       </div>

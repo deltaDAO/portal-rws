@@ -11,6 +11,8 @@ import LinkOpener from '../molecules/LinkOpener'
 import { BestPrice } from '../../models/BestPrice'
 import Loader from '../atoms/Loader'
 import classNames from 'classnames/bind'
+import { ServiceMetadataMarket } from '../../@types/MetaData'
+import { getLegalName } from '../../utils/metadata'
 
 const cx = classNames.bind(styles)
 
@@ -25,8 +27,12 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
   price,
   noPublisher
 }: AssetTeaserProps) => {
-  const { attributes } = ddo.findServiceByType('metadata')
+  const { attributes } = ddo.findServiceByType(
+    'metadata'
+  ) as ServiceMetadataMarket
+  const isCompliant = !!attributes.additionalInformation.compliance?.gx
   const { name, type } = attributes.main
+  const legalName = getLegalName(ddo)
   const { dataTokenInfo } = ddo
   const isCompute = Boolean(ddo?.findServiceByType('compute'))
   const accessType = isCompute ? 'compute' : 'access'
@@ -41,7 +47,14 @@ const AssetTeaser: React.FC<AssetTeaserProps> = ({
             <Dotdotdot clamp={3}>
               <h1 className={styles.title}>{name}</h1>
             </Dotdotdot>
-            <Publisher account={owner} minimal className={styles.publisher} />
+            <Publisher
+              account={owner}
+              verifiedServiceProviderName={
+                isCompliant ? legalName : `${legalName} (unverified)`
+              }
+              minimal
+              className={styles.publisher}
+            />
           </header>
 
           <AssetType

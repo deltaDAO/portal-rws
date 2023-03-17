@@ -5,7 +5,9 @@ import {
   MetadataMarket,
   MetadataPublishFormDataset,
   MetadataPublishFormAlgorithm,
-  ServiceSelfDescription
+  ServiceSelfDescription,
+  ServiceMetadataMarket,
+  IVerifiablePresentation
 } from '../@types/MetaData'
 import { toStringNoMS } from '.'
 import AssetModel from '../models/Asset'
@@ -149,32 +151,52 @@ export async function signServiceSelfDescription(body: any): Promise<any> {
   }
 }
 
+export function isString(value: unknown): boolean {
+  return (
+    typeof value === 'string' ||
+    Object.prototype.toString.call(value) === '[object String]'
+  )
+}
+
 export async function verifyServiceSelfDescription({
   body,
   raw
 }: {
-  body: string
+  body: any
   raw?: boolean
 }): Promise<{
   verified: boolean
   responseBody?: any
 }> {
   if (!body) return { verified: false }
+  if (!raw) {
+    if (!isString(body)) {
+      Logger.error(`Expected a string url but received: ${body}`)
+      return { verified: false }
+    }
+    body = (await axios.get(body)).data
+  }
 
-  const baseUrl = raw
-    ? `${complianceUri}/service-offering/verify/raw`
-    : `${complianceUri}/service-offering/verify`
-  const requestBody = raw ? body : { url: body }
+  let baseUrl
+  if (
+    body.type &&
+    Array.isArray(body.type) &&
+    (body.type as string[]).indexOf('VerifiablePresentation') !== -1
+  ) {
+    baseUrl = `${complianceUri}/2210vp/compliance`
+  } else {
+    baseUrl = `${complianceUri}/participant/verify/raw`
+  }
 
   try {
-    const response = await axios.post(baseUrl, requestBody)
+    const response = await axios.post(baseUrl, body)
     if (response?.status === 409) {
       return {
         verified: false,
         responseBody: response.data.body
       }
     }
-    if (response?.status === 200) {
+    if (response?.status < 400) {
       return { verified: true }
     }
 
@@ -261,7 +283,20 @@ export function getInitialPublishFormDatasetsValues(
   return localStorageValues || initialValues
 }
 
-export function transformPublishFormToMetadata(
+const verifySelfDescription = async (args: {
+  url?: string
+  rawSD?: any
+}): Promise<boolean> => {
+  if (args?.url) {
+    return (await verifyServiceSelfDescription({ body: args.url, raw: false }))
+      .verified
+  } else {
+    return (await verifyServiceSelfDescription({ body: args.rawSD, raw: true }))
+      .verified
+  }
+}
+
+export async function transformPublishFormToMetadata(
   {
     name,
     author,
@@ -274,7 +309,7 @@ export function transformPublishFormToMetadata(
     serviceSelfDescription
   }: Partial<MetadataPublishFormDataset>,
   ddo?: DDO
-): MetadataMarket {
+): Promise<MetadataMarket> {
   const currentTime = toStringNoMS(new Date())
 
   const transformedLinks = getValidUrlArrayContent(links)
@@ -306,7 +341,13 @@ export function transformPublishFormToMetadata(
       consent: {
         noPersonalData
       },
-      serviceSelfDescription: transformedServiceSelfDescription
+      serviceSelfDescription: transformedServiceSelfDescription,
+      compliance: {
+        gx: await verifySelfDescription({
+          url: transformedServiceSelfDescription.url,
+          rawSD: transformedServiceSelfDescription.raw
+        })
+      }
     }
   }
 
@@ -375,7 +416,7 @@ export async function validateDockerImage(
   return isValid
 }
 
-export function transformPublishAlgorithmFormToMetadata(
+export async function transformPublishAlgorithmFormToMetadata(
   {
     name,
     author,
@@ -386,10 +427,11 @@ export function transformPublishAlgorithmFormToMetadata(
     entrypoint,
     termsAndConditions,
     noPersonalData,
-    files
+    files,
+    serviceSelfDescription
   }: Partial<MetadataPublishFormAlgorithm>,
   ddo?: DDO
-): MetadataMarket {
+): Promise<MetadataMarket> {
   const currentTime = toStringNoMS(new Date())
   const fileUrl = typeof files !== 'string' && sanitizeUrl(files[0].url)
   const algorithmLanguage = getAlgorithmFileExtension(fileUrl)
@@ -399,6 +441,15 @@ export function transformPublishAlgorithmFormToMetadata(
     entrypoint,
     algorithmLanguage
   )
+
+  const transformedServiceSelfDescription =
+    typeof serviceSelfDescription === 'string'
+      ? undefined
+      : {
+          url: serviceSelfDescription?.[0]?.url,
+          raw: serviceSelfDescription?.[0]?.raw
+        }
+
   const metadata: MetadataMarket = {
     main: {
       ...AssetModel.main,
@@ -417,9 +468,30 @@ export function transformPublishAlgorithmFormToMetadata(
       termsAndConditions,
       consent: {
         noPersonalData
+      },
+      serviceSelfDescription: transformedServiceSelfDescription,
+      compliance: {
+        gx: await verifySelfDescription({
+          url: transformedServiceSelfDescription.url,
+          rawSD: transformedServiceSelfDescription.raw
+        })
       }
     }
   }
 
   return metadata
+}
+
+export function getLegalName(ddo: DDO): string {
+  const { attributes } = ddo.findServiceByType(
+    'metadata'
+  ) as ServiceMetadataMarket
+  const sd = attributes.additionalInformation?.serviceSelfDescription
+  if (sd?.raw) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return (sd.raw as IVerifiablePresentation).verifiableCredential[2]
+      .credentialSubject['gax-trust-framework:legalName']['@value']
+  }
+  return ddo?.publicKey[0].owner
 }

@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import styles from './index.module.css'
 import classNames from 'classnames/bind'
 import { Link } from 'gatsby'
-import { accountTruncate } from '../../../utils/web3'
+import { accountTruncate, nameTruncate } from '../../../utils/web3'
 
 const cx = classNames.bind(styles)
 
@@ -17,7 +17,8 @@ export default function Publisher({
   verifiedServiceProviderName?: string
   className?: string
 }): ReactElement {
-  const name = verifiedServiceProviderName || accountTruncate(account)
+  const name =
+    nameTruncate(verifiedServiceProviderName, 35) || accountTruncate(account)
 
   const styleClasses = cx({
     publisher: true,

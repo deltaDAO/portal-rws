@@ -1,0 +1,11 @@
+services:
+  delta-dao-portal:
+    container_name: delta-dao-portal
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: vdxcontainerregistry2022051200.azurecr.io/gx-fma-portal:v1.0.0
+    ports:
+      - '8000:8000'
+    volumes:
+      - $PWD:/usr/src/app

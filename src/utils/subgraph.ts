@@ -237,7 +237,7 @@ const userPoolSharesQuery = gql`
 `
 
 const UserTokenOrders = gql`
-  query OrdersData($user: String!) {
+  query OrdersData($user: String) {
     tokenOrders(
       orderBy: timestamp
       orderDirection: desc
@@ -253,7 +253,7 @@ const UserTokenOrders = gql`
   }
 `
 const UserSalesQuery = gql`
-  query UserSalesQuery($userSalesId: String) {
+  query UserSalesQuery($userSalesId: ID) {
     users(where: { id: $userSalesId }) {
       id
       nrSales
